@@ -1,0 +1,153 @@
+
+//Toros is the name of the webshop
+
+application {
+  config {
+    baseName toros,
+    applicationType gateway,
+    packageName com.toros,
+    serviceDiscoveryType eureka,
+    authenticationType jwt,
+    prodDatabaseType mysql,
+    cacheProvider hazelcast,
+    buildTool gradle,
+    searchEngine elasticsearch,
+    testFrameworks [protractor], 
+    clientFramework angular
+  } 
+  entities *
+}
+
+application {
+  config {
+    baseName costumerService,
+    applicationType microservice,
+    packageName com.costumer,
+    cacheProvider hazelcast,
+    buildTool gradle,
+    prodDatabaseType mysql,
+    searchEngine elasticsearch,
+  }
+  entities Costumer
+}
+
+application {
+  config {
+    baseName productService,
+    applicationType microservice,
+    packageName com.product,
+    cacheProvider hazelcast,
+    buildTool gradle,
+    prodDatabaseType mysql,
+    searchEngine elasticsearch,
+  }
+  entities Product
+}
+
+application {
+  config {
+    baseName cartService,
+    applicationType microservice,
+    packageName com.cart,
+    cacheProvider hazelcast,
+    buildTool gradle,
+    prodDatabaseType mysql,
+    searchEngine elasticsearch,
+  }
+  entities Product, Costumer, Cart
+}
+
+application {
+  config {
+    baseName orderService,
+    applicationType microservice,
+    packageName com.order,
+    cacheProvider hazelcast,
+    buildTool gradle,
+    prodDatabaseType mysql,
+    searchEngine elasticsearch,
+  }
+  entities Costumer, Order, Cart
+}
+
+application {
+  config {
+    baseName paymentService,
+    applicationType microservice,
+    packageName com.payment,
+    cacheProvider hazelcast,
+    buildTool gradle,
+    prodDatabaseType mysql,
+    searchEngine elasticsearch,
+  }
+  entities Costumer, Order, Payment
+}
+
+application {
+  config {
+    baseName notificationService,
+    applicationType microservice,
+    packageName com.notification,
+    cacheProvider hazelcast,
+    buildTool gradle,
+    prodDatabaseType mysql,
+    searchEngine elasticsearch,
+  }
+  entities Costumer, Product, Cart, Payment
+}
+
+entity Costumer {
+	name String required
+    surname String required
+    email String required pattern(/^[^@\s]+@[^@\s]+\.[^@\s]+$/)
+	adress String required
+    city String required
+    country String required
+}
+
+entity Product {
+	name String required
+    description String
+    price BigDecimal required min(0)
+    availability ProductStatus
+}
+
+enum ProductStatus{
+	AVAILABLE, OUT_OF_STOCK, BACK_ORDER
+}
+
+entity Order {
+	orderDate Instant required
+	status OrderStatus required
+    cartSize Integer required min(1)
+}
+
+enum OrderStatus {
+    COMPLETED, PENDING, CANCELLED
+}
+
+entity Cart{
+	products Product
+}
+
+entity Payment{
+	paymentMethod PaymentMethod required
+    totalPrice Double required
+}
+
+enum PaymentMethod{
+	VISA, MAESTRO, TRANSFER
+}
+
+relationship OneToMany {
+  Cart to Product
+  Order to Product
+  Costumer to Order
+}
+
+relationship OneToOne {
+	Order to Cart
+    Order to Payment
+}
+
+    
