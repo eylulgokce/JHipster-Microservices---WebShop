@@ -1,0 +1,10 @@
+C:\Users\Eylul Gokce\Desktop\Microservices\Microservices_\Project\Microservices\CostumerService\bin\Debug\netcoreapp3.1\appsettings.Development.json
+C:\Users\Eylul Gokce\Desktop\Microservices\Microservices_\Project\Microservices\CostumerService\bin\Debug\netcoreapp3.1\appsettings.json
+C:\Users\Eylul Gokce\Desktop\Microservices\Microservices_\Project\Microservices\CostumerService\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
+C:\Users\Eylul Gokce\Desktop\Microservices\Microservices_\Project\Microservices\CostumerService\bin\Debug\netcoreapp3.1\CostumerService.exe
+C:\Users\Eylul Gokce\Desktop\Microservices\Microservices_\Project\Microservices\CostumerService\obj\Debug\netcoreapp3.1\CostumerService.csprojAssemblyReference.cache
+C:\Users\Eylul Gokce\Desktop\Microservices\Microservices_\Project\Microservices\CostumerService\obj\Debug\netcoreapp3.1\CostumerService.AssemblyInfoInputs.cache
+C:\Users\Eylul Gokce\Desktop\Microservices\Microservices_\Project\Microservices\CostumerService\obj\Debug\netcoreapp3.1\CostumerService.AssemblyInfo.cs
+C:\Users\Eylul Gokce\Desktop\Microservices\Microservices_\Project\Microservices\CostumerService\obj\Debug\netcoreapp3.1\CostumerService.RazorTargetAssemblyInfo.cache
+C:\Users\Eylul Gokce\Desktop\Microservices\Microservices_\Project\Microservices\CostumerService\obj\Debug\netcoreapp3.1\staticwebassets\CostumerService.StaticWebAssets.Manifest.cache
+C:\Users\Eylul Gokce\Desktop\Microservices\Microservices_\Project\Microservices\CostumerService\obj\Debug\netcoreapp3.1\staticwebassets\CostumerService.StaticWebAssets.xml
