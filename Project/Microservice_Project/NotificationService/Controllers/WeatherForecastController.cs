@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
-namespace Microservice_Project.Controllers
+namespace NotificationService.Controllers
 {
     [ApiController]
     [Route("[controller]")]

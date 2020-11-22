@@ -1,0 +1,10 @@
+C:\Users\Eylul Gokce\Desktop\Microservice\Microservices\Project\Microservice_Project\Microservice_Project\bin\Debug\netcoreapp3.1\appsettings.Development.json
+C:\Users\Eylul Gokce\Desktop\Microservice\Microservices\Project\Microservice_Project\Microservice_Project\bin\Debug\netcoreapp3.1\appsettings.json
+C:\Users\Eylul Gokce\Desktop\Microservice\Microservices\Project\Microservice_Project\Microservice_Project\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
+C:\Users\Eylul Gokce\Desktop\Microservice\Microservices\Project\Microservice_Project\Microservice_Project\bin\Debug\netcoreapp3.1\OrderService.exe
+C:\Users\Eylul Gokce\Desktop\Microservice\Microservices\Project\Microservice_Project\Microservice_Project\obj\Debug\netcoreapp3.1\OrderService.csprojAssemblyReference.cache
+C:\Users\Eylul Gokce\Desktop\Microservice\Microservices\Project\Microservice_Project\Microservice_Project\obj\Debug\netcoreapp3.1\OrderService.AssemblyInfoInputs.cache
+C:\Users\Eylul Gokce\Desktop\Microservice\Microservices\Project\Microservice_Project\Microservice_Project\obj\Debug\netcoreapp3.1\OrderService.AssemblyInfo.cs
+C:\Users\Eylul Gokce\Desktop\Microservice\Microservices\Project\Microservice_Project\Microservice_Project\obj\Debug\netcoreapp3.1\OrderService.RazorTargetAssemblyInfo.cache
+C:\Users\Eylul Gokce\Desktop\Microservice\Microservices\Project\Microservice_Project\Microservice_Project\obj\Debug\netcoreapp3.1\staticwebassets\OrderService.StaticWebAssets.Manifest.cache
+C:\Users\Eylul Gokce\Desktop\Microservice\Microservices\Project\Microservice_Project\Microservice_Project\obj\Debug\netcoreapp3.1\staticwebassets\OrderService.StaticWebAssets.xml
