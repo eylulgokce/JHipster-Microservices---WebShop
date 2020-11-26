@@ -29,7 +29,6 @@ namespace OrderService.Database
         }
         public void AddOrder(Order order)
         {
-            //SqlTransaction objTrans = null;
             var connection = GetConnection();
             // Das soll als Transaktion
            
@@ -59,7 +58,15 @@ namespace OrderService.Database
         private decimal calculateTotalPrice()
         {
             decimal total = 0;
-            //TODO
+            var connection = GetConnection();
+            var cmd = new MySqlCommand($@"SELECT SUM(price) FROM orders.ordertoproduct OTP
+                                JOIN products.products P ON P.idProduct = OTP.idProduct", connection);
+            
+            var reader = cmd.ExecuteReader();
+            total = reader.GetDecimal("sum(price)");
+
+            reader.Close();
+            connection.Close();
 
             return total;
         }
