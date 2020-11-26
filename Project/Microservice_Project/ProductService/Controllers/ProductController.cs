@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using ProductService.Database;
 using ProductService.Model;
+using ProductService.Model.Requests;
 
 namespace ProductService.Controllers
 {
@@ -23,6 +22,21 @@ namespace ProductService.Controllers
         public IEnumerable<Product> GetAllProducts()
         {
             return _productDatabase.GetAllProducts();
+        }
+
+        [HttpPut]
+        public IActionResult SellProducts([FromBody] SellProductRequest request)
+        {
+            try
+            {
+                _productDatabase.SellProduct(request.IdProduct, request.NumSoldUnits);
+            }
+            catch(Exception ex)
+            {
+                return new ConflictObjectResult(ex.Message);
+            }
+
+            return new OkObjectResult(null);
         }
     }
 }
