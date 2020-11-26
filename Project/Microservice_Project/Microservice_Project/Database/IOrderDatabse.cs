@@ -8,5 +8,6 @@ namespace OrderService
     interface IOrderDatabse
     {
         IEnumerable<Order> GetAllOrders();
+        void AddOrder(Order order);
     }
 }
