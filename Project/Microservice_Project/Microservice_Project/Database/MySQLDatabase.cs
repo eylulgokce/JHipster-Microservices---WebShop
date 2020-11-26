@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace OrderService.Database
 {
-    public class MySQLDatabase : IOrderDatabse
+    public class MySQLDatabase : IOrderDatabase
     {
         private int costumerid;
 
@@ -29,46 +29,58 @@ namespace OrderService.Database
         }
         public void AddOrder(Order order)
         {
-            var connection = GetConnection();
-            // Das soll als Transaktion
-           
-            using(MySqlConnection db = connection) {
-                MySqlTransaction transaction;
+            // Disposable
+            using var connection = GetConnection();
+            var transaction = connection.BeginTransaction();
+            var insertToOrderCommand = new MySqlCommand($@"INSERT INTO orders.order (idCustomer, totalprice)
+                                VALUES ({ order.IdCustomer }, 0.0)", connection, transaction);
 
-                db.Open();
-                transaction = db.BeginTransaction();
-
-                // INSERT INTO order
-                foreach (var orderToProduct in order.OrderToProducts)
-                {
-                    // INSERT INTO ordertoproduct
-                    MySqlCommand cmd = new MySqlCommand($@"
-                                INERT INTO orders.ordertoproduct ('idOrder', 'idProduct', 'numBoughtUnits')
-                                VALUES ({orderToProduct.IdOrder}, {orderToProduct.IdProduct}, {orderToProduct.NumBoughtUnits})", db, transaction);
-                }
-
-                transaction.Commit();
+            var rowsAffected = insertToOrderCommand.ExecuteNonQuery();
+            if (rowsAffected != 1)
+            {
+                throw new Exception("dffgsdfgsd gsfg sdfs f ");
             }
 
-            var insertToOrder = new MySqlCommand($@"INSERT INTO orders.order ('costumerid', 'totalprice') 
-                                VALUES ({ costumerid }, { calculateTotalPrice() })", connection);
-            var reader = insertToOrder.ExecuteReader();
+            if (!GetLastInsertId(connection, transaction, out var idOrder))
+            {
+                throw new Exception("Could not get last order id");
+            }
+
+            // INSERT INTO order
+            foreach (var orderToProduct in order.Products)
+            {
+                // INSERT INTO ordertoproduct
+                var insertToOtp = new MySqlCommand($@"
+                                INSERT INTO orders.ordertoproduct (idOrder, idProduct, numBoughtUnits)
+                                VALUES ({idOrder}, {orderToProduct.IdProduct}, {orderToProduct.NumBoughtUnits})", connection, transaction);
+
+                rowsAffected = insertToOtp.ExecuteNonQuery();
+                if (rowsAffected != 1)
+                {
+                    throw new Exception("dffgsdfgsd gsfg sdfs f ");
+                }
+            }
+
+            var totalPrice = CalculateTotalPrice(connection, transaction, idOrder);
+            var updateOrderCommand = new MySqlCommand($"UPDATE orders.order SET totalprice=@paramTotalPrice WHERE idOrder=@paramIdOrder", connection, transaction);
+            updateOrderCommand.Parameters.AddWithValue("@paramTotalPrice", totalPrice);
+            updateOrderCommand.Parameters.AddWithValue("@paramIdOrder", idOrder);
+            updateOrderCommand.ExecuteNonQuery();
+
+
+
+            transaction.Commit();
         }
 
-        private decimal calculateTotalPrice()
+        private decimal CalculateTotalPrice(MySqlConnection connection, MySqlTransaction transaction, int idOrder)
         {
-            decimal total = 0;
-            var connection = GetConnection();
-            var cmd = new MySqlCommand($@"SELECT SUM(price) FROM orders.ordertoproduct OTP
-                                JOIN products.products P ON P.idProduct = OTP.idProduct", connection);
-            
-            var reader = cmd.ExecuteReader();
-            total = reader.GetDecimal("sum(price)");
+            var query = $@"SELECT SUM(OTP.numBoughtUnits*P.price)
+                                FROM orders.ordertoproduct OTP
+                                JOIN products.products P ON P.idProduct = OTP.idProduct
+                                WHERE OTP.idOrder={idOrder}";
 
-            reader.Close();
-            connection.Close();
-
-            return total;
+            GetQueryResultSimpleDecimal(connection, transaction, query, out var result);
+            return result;
         }
 
         public IEnumerable<Order> GetAllOrders()
@@ -110,6 +122,47 @@ namespace OrderService.Database
             }
 
             return null;
+        }
+
+        private bool GetQueryResultSimpleDecimal(MySqlConnection connection, MySqlTransaction transaction, string query, out decimal result)
+        {
+            var cmd = new MySqlCommand(query, connection, transaction);
+            var rdr = cmd.ExecuteReader();
+            result = 0;
+            if (!rdr.HasRows)
+            {
+                rdr.Close();
+                return false;
+            }
+
+            rdr.Read();
+            result = rdr.GetDecimal(0);
+            rdr.Close();
+
+            return true;
+        }
+
+        private bool GetQueryResultSimpleInt32(MySqlConnection connection, MySqlTransaction transaction, string query, out int result)
+        {
+            var cmd = new MySqlCommand(query, connection, transaction);
+            var rdr = cmd.ExecuteReader();
+            result = 0;
+            if (!rdr.HasRows)
+            {
+                rdr.Close();
+                return false;
+            }
+
+            rdr.Read();
+            result = rdr.GetInt32(0);
+            rdr.Close();
+
+            return true;
+        }
+
+        private bool GetLastInsertId(MySqlConnection connection, MySqlTransaction transaction, out int result)
+        {
+            return GetQueryResultSimpleInt32(connection, transaction, "SELECT LAST_INSERT_ID()", out result);
         }
     }
 }

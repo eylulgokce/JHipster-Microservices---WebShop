@@ -31,3 +31,12 @@ C:\Users\Eylul Gokce\Desktop\Microservice\Microservices\Project\Microservice_Pro
 C:\Users\Eylul Gokce\Desktop\Microservice\Microservices\Project\Microservice_Project\Microservice_Project\obj\Debug\netcoreapp3.1\OrderService.dll
 C:\Users\Eylul Gokce\Desktop\Microservice\Microservices\Project\Microservice_Project\Microservice_Project\obj\Debug\netcoreapp3.1\OrderService.pdb
 C:\Users\Eylul Gokce\Desktop\Microservice\Microservices\Project\Microservice_Project\Microservice_Project\obj\Debug\netcoreapp3.1\OrderService.genruntimeconfig.cache
+C:\Users\Eylul Gokce\Desktop\Microservice\Microservices\Project\Microservice_Project\Microservice_Project\bin\Debug\netcoreapp3.1\System.Data.SqlClient.dll
+C:\Users\Eylul Gokce\Desktop\Microservice\Microservices\Project\Microservice_Project\Microservice_Project\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\sni.dll
+C:\Users\Eylul Gokce\Desktop\Microservice\Microservices\Project\Microservice_Project\Microservice_Project\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\sni.dll
+C:\Users\Eylul Gokce\Desktop\Microservice\Microservices\Project\Microservice_Project\Microservice_Project\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\sni.dll
+C:\Users\Eylul Gokce\Desktop\Microservice\Microservices\Project\Microservice_Project\Microservice_Project\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\Eylul Gokce\Desktop\Microservice\Microservices\Project\Microservice_Project\Microservice_Project\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\Eylul Gokce\Desktop\Microservice\Microservices\Project\Microservice_Project\Microservice_Project\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+C:\Users\Eylul Gokce\Desktop\Microservice\Microservices\Project\Microservice_Project\Microservice_Project\obj\Debug\netcoreapp3.1\OrderService.csproj.CoreCompileInputs.cache
+C:\Users\Eylul Gokce\Desktop\Microservice\Microservices\Project\Microservice_Project\Microservice_Project\obj\Debug\netcoreapp3.1\OrderService.MvcApplicationPartsAssemblyInfo.cache

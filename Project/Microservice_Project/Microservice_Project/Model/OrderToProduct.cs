@@ -9,6 +9,7 @@ namespace OrderService.Model
     [DataContract]
     public class OrderToProduct
     {
+        public OrderToProduct() { }
         public OrderToProduct(int idOrder, int idProduct, int numBoughtUnits)
         {
             IdOrder = idOrder;

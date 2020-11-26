@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "zrEhgD8mjjwlMLQEsa0Dw5GCfc3hfrAE22uRR2dlRFvjoxsJ2u6Yt4StD56htxrRZQuwRUU+IEO+x3h9PA4qZA==",
+  "dgSpecHash": "HDG1YYDBbY+qDWcVHi4P7STU/a32jOqjjmL0tjl3DpR0+1e51vDWMm4ZBUH8hX2b3TBuK2pY2XqGUXJM7V2YOA==",
   "success": true,
   "projectFilePath": "C:\\Users\\Eylul Gokce\\Desktop\\Microservice\\Microservices\\Project\\Microservice_Project\\Microservice_Project\\OrderService.csproj",
   "expectedPackageFiles": [
@@ -17,6 +17,7 @@
     "C:\\Users\\Eylul Gokce\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
     "C:\\Users\\Eylul Gokce\\.nuget\\packages\\mysql.data\\8.0.22\\mysql.data.8.0.22.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\netstandard.library\\1.6.0\\netstandard.library.1.6.0.nupkg.sha512",
+    "C:\\Users\\Eylul Gokce\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\runtime.native.system\\4.0.0\\runtime.native.system.4.0.0.nupkg.sha512",
     "C:\\Users\\Eylul Gokce\\.nuget\\packages\\runtime.native.system.data.sqlclient.sni\\4.7.0\\runtime.native.system.data.sqlclient.sni.4.7.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\runtime.native.system.io.compression\\4.1.0\\runtime.native.system.io.compression.4.1.0.nupkg.sha512",
