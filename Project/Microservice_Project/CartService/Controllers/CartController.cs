@@ -16,6 +16,7 @@ namespace CartService.Controllers
     public class CartController : ControllerBase
     {
         private Cart cart;
+        // private Dictionary<int, Cart> carts;
 
         [HttpGet]
         public IEnumerable<Product> GetCostumerCart()
@@ -33,7 +34,7 @@ namespace CartService.Controllers
         [HttpPut]
         public IActionResult AddProductToCart([FromBody] SelectProductRequest request)
         {
-            cart.costumerCart.Add(request.product);
+            cart.costumerCart.Add(request.Product);
 
             return new OkObjectResult(null);
         }

@@ -10,7 +10,8 @@ namespace CartService.Model.Requests
     [DataContract]
     public class SelectProductRequest
     {
-        public Product product { get; set; }
+        public int IdCustomer { get; set; }
+        public Product Product { get; set; }
 
     }
 }

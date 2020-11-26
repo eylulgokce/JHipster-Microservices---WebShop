@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace CostumerService.Database
 {
-    interface ICostumerDatabase
+    public interface ICostumerDatabase
     {
         int FindCostumerID(string firstname, string lastname, string email);
     }
