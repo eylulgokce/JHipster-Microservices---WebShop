@@ -8,41 +8,41 @@ using NotificationService.Model;
 
 namespace NotificationService.Controllers
 {
+    [ApiController]
+    [Route("notifications")]
     public class NotificationsController : Controller
     {
-        private INotificationDatabase _notificationDatabse;
-        public IActionResult Index()
-        {
-            return View();
-        }
+        private readonly INotificationDatabase _notificationDatabase;
 
+        public NotificationsController(INotificationDatabase notificationDatabase)
+        {
+            _notificationDatabase = notificationDatabase;
+        }
 
         [HttpGet]
         public List<Notification> GetAllNotifications()
         {
-            return _notificationDatabse.GetAllNotifications();
+            return _notificationDatabase.GetAllNotifications();
         }
 
         [HttpPost]
-        public void AddNotification([FromBody] string level, [FromBody] string message)
+        public IActionResult AddNotification([FromBody] Notification notification)
         {
-            Notification notification = new Notification(level, message);
-            _notificationDatabse.AddNotification(notification);
+            _notificationDatabase.AddNotification(notification);
+            return new OkResult();
         }
 
-        [HttpDelete("{idNotification}")]
-        public void DismissNotification(int idNotification)
+        [HttpDelete]
+        public void DismissNotification([FromQuery] int id)
         {
             try
             {
-                _notificationDatabse.DismissNotification(idNotification);
+                _notificationDatabase.DismissNotification(id);
             }
             catch (Exception ex)
             {
-
+                
             }
-
         }
-    }
-       
+    }  
 }

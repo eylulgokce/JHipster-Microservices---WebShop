@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace NotificationService.Database
 {
-    interface INotificationDatabase
+    public interface INotificationDatabase
     {
         List<Notification> GetAllNotifications();
         void AddNotification(Notification notification);

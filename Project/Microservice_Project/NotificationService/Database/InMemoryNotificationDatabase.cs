@@ -1,27 +1,34 @@
 ﻿using NotificationService.Model;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace NotificationService.Database
 {
     public class InMemoryNotificationDatabase : INotificationDatabase
     {
-        private List<Notification> AllNotifications;
+        private readonly Dictionary<int, Notification> _allNotifications;
+        private int _nextId = 1;
+        
+        public InMemoryNotificationDatabase()
+        {
+            _allNotifications = new Dictionary<int, Notification>();
+        }
+        
         public void AddNotification(Notification notification)
         {
-            AllNotifications.Add(notification);
+            var assignedId = _nextId++;
+            notification.IdNotification = assignedId;
+            _allNotifications.Add(assignedId, notification);
         }
 
         public void DismissNotification(int idNotification)
         {
-            AllNotifications.RemoveAt(idNotification);
+            _allNotifications.Remove(idNotification);
         }
 
         public List<Notification> GetAllNotifications()
         {
-            return AllNotifications;
+            return _allNotifications.Values.ToList();
         }
     }
 }
