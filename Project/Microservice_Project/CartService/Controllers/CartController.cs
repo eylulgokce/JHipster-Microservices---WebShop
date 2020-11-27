@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using CartService.Model;
 using CartService.Model.Requests;
 using Microsoft.AspNetCore.Mvc;
 using ProductService.Model;
-
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace CartService.Controllers
 {
@@ -16,19 +11,12 @@ namespace CartService.Controllers
     public class CartController : ControllerBase
     {
         private Cart cart;
-        // private Dictionary<int, Cart> carts;
+        private Dictionary<int, Cart> carts;
 
         [HttpGet]
         public IEnumerable<Product> GetCostumerCart()
         {
             return cart.costumerCart;
-        }
-
-        // GET api/<CartController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
         }
 
         [HttpPut]

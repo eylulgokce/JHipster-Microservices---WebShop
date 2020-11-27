@@ -38,7 +38,7 @@ namespace OrderService.Database
             var rowsAffected = insertToOrderCommand.ExecuteNonQuery();
             if (rowsAffected != 1)
             {
-                throw new Exception("dffgsdfgsd gsfg sdfs f ");
+                throw new Exception("There is an error occoured when inserting an Order! " + rowsAffected + "Orders are effected when executing the query!");
             }
 
             if (!GetLastInsertId(connection, transaction, out var idOrder))
@@ -57,7 +57,7 @@ namespace OrderService.Database
                 rowsAffected = insertToOtp.ExecuteNonQuery();
                 if (rowsAffected != 1)
                 {
-                    throw new Exception("dffgsdfgsd gsfg sdfs f ");
+                    throw new Exception("There is an error occoured when inserting to ordertoproduct! " + rowsAffected + "Orders are effected when executing the query!");
                 }
             }
 
@@ -67,7 +67,34 @@ namespace OrderService.Database
             updateOrderCommand.Parameters.AddWithValue("@paramIdOrder", idOrder);
             updateOrderCommand.ExecuteNonQuery();
 
+            //UPDATE PRODUCT QUANTITY
+            var BoughtUnitsFromOrder = new MySqlCommand($@"SELECT P.idProduct, OTP.numBoughtUnits
+                                                FROM orders.ordertoproduct OTP
+                                                JOIN products.products P ON P.idProduct = OTP.idProduct
+                                                WHERE OTP.idOrder={idOrder}", connection, transaction);
 
+            var reader = BoughtUnitsFromOrder.ExecuteReader();
+            var numBoughtUnitsPerProduct = new Dictionary<int, int>();
+
+            while (reader.Read())
+            {
+                var idProduct = reader.GetInt32("idProduct");
+                var numBoughtUnits = reader.GetInt32("numBoughtUnits");
+                numBoughtUnitsPerProduct.Add(idProduct, numBoughtUnits);
+            }
+
+            foreach (KeyValuePair<int, int> entry in numBoughtUnitsPerProduct)
+            {
+                var reduceQuantityByProductID = new MySqlCommand($@"UPDATE products
+                                                SET availableUnits = availableUnits-{entry.Value}
+                                                WHERE idProduct={entry.Key} AND availableUnits >= {entry.Value}", connection, transaction);
+
+                var affectedRows = reduceQuantityByProductID.ExecuteNonQuery();
+                if (affectedRows == 0)
+                {
+                    throw new Exception($"Product with ID {entry.Key} could not be sold (failed to sell {entry.Value} unit(s))!");
+                }
+            }
 
             transaction.Commit();
         }
