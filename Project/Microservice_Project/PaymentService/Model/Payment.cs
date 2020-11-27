@@ -7,6 +7,7 @@ namespace PaymentService.Model
 {
     public class Payment
     {
+        public Payment() { }
         public Payment(int idCostumer, string paymentMethod, decimal totalPrice)
         {
             IdCostumer = idCostumer;

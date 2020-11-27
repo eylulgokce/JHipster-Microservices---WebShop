@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace PaymentService.Database
 {
-    interface IPaymentDatabase
+    public interface IPaymentDatabase
     {
         
     }

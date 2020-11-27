@@ -5,7 +5,8 @@ using System.Threading.Tasks;
 
 namespace PaymentService.Database
 {
-    public class MySQLDatabase
+    public class MySQLDatabase: IPaymentDatabase
     {
+        
     }
 }
