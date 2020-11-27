@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using MicroserviceCommon.Model;
+using System.Collections.Generic;
 
 namespace OrderService.Database
 {
@@ -7,6 +8,6 @@ namespace OrderService.Database
         IEnumerable<Order> GetAllOrders();
         void AddOrder(Order order);
 
-        //IEnumerable<Product> GetAllProductsByOrderId();
+        IEnumerable<Product> GetAllProductsByOrderId(int idOrder);
     }
 }

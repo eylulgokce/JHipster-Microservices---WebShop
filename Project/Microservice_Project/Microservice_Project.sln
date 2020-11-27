@@ -3,19 +3,21 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30621.155
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderService", "Microservice_Project\OrderService.csproj", "{BD053C2A-567E-4EB4-BA10-B0A90547870D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrderService", "Microservice_Project\OrderService.csproj", "{BD053C2A-567E-4EB4-BA10-B0A90547870D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductService", "ProductService\ProductService.csproj", "{353524A4-382C-48D3-B0C5-824346972E45}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProductService", "ProductService\ProductService.csproj", "{353524A4-382C-48D3-B0C5-824346972E45}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CostumerService", "CostumerService\CostumerService.csproj", "{FC17836A-5D01-4BD1-A2E8-581525D8ECE0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CostumerService", "CostumerService\CostumerService.csproj", "{FC17836A-5D01-4BD1-A2E8-581525D8ECE0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CartService", "CartService\CartService.csproj", "{3C7AB054-EEEE-4F72-A7B4-5BF326EC6BAD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CartService", "CartService\CartService.csproj", "{3C7AB054-EEEE-4F72-A7B4-5BF326EC6BAD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NotificationService", "NotificationService\NotificationService.csproj", "{0FD6C3BB-8D5E-4C23-B720-6E879DBCC634}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NotificationService", "NotificationService\NotificationService.csproj", "{0FD6C3BB-8D5E-4C23-B720-6E879DBCC634}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaymentService", "PaymentService\PaymentService.csproj", "{16CFDE75-3C14-4CD4-8FA4-32457D65A6DB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PaymentService", "PaymentService\PaymentService.csproj", "{16CFDE75-3C14-4CD4-8FA4-32457D65A6DB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APIGateway", "APIGateway\APIGateway.csproj", "{E3ACAAB0-52A2-41B8-AD80-CD8CB7DAD233}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "APIGateway", "APIGateway\APIGateway.csproj", "{E3ACAAB0-52A2-41B8-AD80-CD8CB7DAD233}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MicroserviceCommon", "MicroserviceCommon\MicroserviceCommon.csproj", "{5C6B41CC-B15F-4564-BB1D-1F15D405B9CA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{E3ACAAB0-52A2-41B8-AD80-CD8CB7DAD233}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E3ACAAB0-52A2-41B8-AD80-CD8CB7DAD233}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E3ACAAB0-52A2-41B8-AD80-CD8CB7DAD233}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5C6B41CC-B15F-4564-BB1D-1F15D405B9CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C6B41CC-B15F-4564-BB1D-1F15D405B9CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C6B41CC-B15F-4564-BB1D-1F15D405B9CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C6B41CC-B15F-4564-BB1D-1F15D405B9CA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

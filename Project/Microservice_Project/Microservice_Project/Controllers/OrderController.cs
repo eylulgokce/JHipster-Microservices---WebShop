@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using MicroserviceCommon.ErrorHandling;
+using Microsoft.AspNetCore.Mvc;
 using OrderService.Database;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -18,15 +19,18 @@ namespace OrderService.Controllers
 
         // POST api/<OrderController>
         [HttpPost]
-        public void Post([FromBody] Order order)
+        public IActionResult Post([FromBody] Order order)
         {
-            _orderDatabase.AddOrder(order);
-        }
+            try
+            {
+                _orderDatabase.AddOrder(order);
+            }
+            catch(BaseMicroserviceException ex)
+            {
+                return ex.ToActionResult();
+            }
 
-        // PUT api/<OrderController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
+            return new AcceptedResult();
         }
     }
 }

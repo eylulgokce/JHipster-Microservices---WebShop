@@ -40,3 +40,11 @@ C:\Users\Eylul Gokce\Desktop\Microservice\Microservices\Project\Microservice_Pro
 C:\Users\Eylul Gokce\Desktop\Microservice\Microservices\Project\Microservice_Project\Microservice_Project\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
 C:\Users\Eylul Gokce\Desktop\Microservice\Microservices\Project\Microservice_Project\Microservice_Project\obj\Debug\netcoreapp3.1\OrderService.csproj.CoreCompileInputs.cache
 C:\Users\Eylul Gokce\Desktop\Microservice\Microservices\Project\Microservice_Project\Microservice_Project\obj\Debug\netcoreapp3.1\OrderService.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Eylul Gokce\Desktop\Microservice\Microservices\Project\Microservice_Project\Microservice_Project\obj\Debug\netcoreapp3.1\OrderService.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Eylul Gokce\Desktop\Microservice\Microservices\Project\Microservice_Project\Microservice_Project\bin\Debug\netcoreapp3.1\ProductService.exe
+C:\Users\Eylul Gokce\Desktop\Microservice\Microservices\Project\Microservice_Project\Microservice_Project\bin\Debug\netcoreapp3.1\ProductService.dll
+C:\Users\Eylul Gokce\Desktop\Microservice\Microservices\Project\Microservice_Project\Microservice_Project\bin\Debug\netcoreapp3.1\ProductService.pdb
+C:\Users\Eylul Gokce\Desktop\Microservice\Microservices\Project\Microservice_Project\Microservice_Project\bin\Debug\netcoreapp3.1\Microsoft.DotNet.PlatformAbstractions.dll
+C:\Users\Eylul Gokce\Desktop\Microservice\Microservices\Project\Microservice_Project\Microservice_Project\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyModel.dll
+C:\Users\Eylul Gokce\Desktop\Microservice\Microservices\Project\Microservice_Project\Microservice_Project\bin\Debug\netcoreapp3.1\MicroserviceCommon.dll
+C:\Users\Eylul Gokce\Desktop\Microservice\Microservices\Project\Microservice_Project\Microservice_Project\bin\Debug\netcoreapp3.1\MicroserviceCommon.pdb

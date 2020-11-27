@@ -20,7 +20,7 @@ namespace Microservice_Project
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddSingleton<IOrderDatabase, MySQLDatabase>();
+            services.AddSingleton<IOrderDatabase, OrderDatabaseMySQL>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

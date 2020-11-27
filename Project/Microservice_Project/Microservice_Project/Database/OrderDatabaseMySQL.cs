@@ -1,32 +1,13 @@
-﻿using MySql.Data.MySqlClient;
+﻿using MicroserviceCommon.ErrorHandling;
+using MicroserviceCommon.Model;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace OrderService.Database
 {
-    public class MySQLDatabase : IOrderDatabase
+    public class OrderDatabaseMySQL : IOrderDatabase
     {
-        private int costumerid;
-
-        private int GetNextOrderID()
-        {
-            var connection = GetConnection();
-            var cmd = new MySqlCommand($@"
-                 SELECT AUTO_INCREMENT
-                 FROM information_schema.TABLES
-                 WHERE TABLE_SCHEMA = 'orders'
-                 AND TABLE_NAME = 'order'", connection);
-
-            var reader = cmd.ExecuteReader();
-            int nextOrderId = reader.GetInt32("AUTO_INCREMENT");
-            reader.Close();
-            connection.Close();
-
-            return nextOrderId;
-        }
         public void AddOrder(Order order)
         {
             // Disposable
@@ -68,31 +49,36 @@ namespace OrderService.Database
             updateOrderCommand.ExecuteNonQuery();
 
             //UPDATE PRODUCT QUANTITY
-            var BoughtUnitsFromOrder = new MySqlCommand($@"SELECT P.idProduct, OTP.numBoughtUnits
+            var boughtUnitsFromOrder = new MySqlCommand($@"SELECT P.idProduct, OTP.numBoughtUnits
                                                 FROM orders.ordertoproduct OTP
                                                 JOIN products.products P ON P.idProduct = OTP.idProduct
                                                 WHERE OTP.idOrder={idOrder}", connection, transaction);
 
-            var reader = BoughtUnitsFromOrder.ExecuteReader();
             var numBoughtUnitsPerProduct = new Dictionary<int, int>();
-
-            while (reader.Read())
+            using (var reader = boughtUnitsFromOrder.ExecuteReader())
             {
-                var idProduct = reader.GetInt32("idProduct");
-                var numBoughtUnits = reader.GetInt32("numBoughtUnits");
-                numBoughtUnitsPerProduct.Add(idProduct, numBoughtUnits);
+                while (reader.Read())
+                {
+                    var idProduct = reader.GetInt32("idProduct");
+                    var numBoughtUnits = reader.GetInt32("numBoughtUnits");
+                    if(numBoughtUnits <= 0)
+                    {
+                        throw new BadRequestMicroserviceException($"Tried to buy invalid amount of {numBoughtUnits} unit(s) of product ID {idProduct}!");
+                    }
+                    numBoughtUnitsPerProduct.Add(idProduct, numBoughtUnits);
+                }
             }
 
-            foreach (KeyValuePair<int, int> entry in numBoughtUnitsPerProduct)
+            foreach (var entry in numBoughtUnitsPerProduct)
             {
-                var reduceQuantityByProductID = new MySqlCommand($@"UPDATE products
+                var reduceQuantityByProductID = new MySqlCommand($@"UPDATE products.products
                                                 SET availableUnits = availableUnits-{entry.Value}
                                                 WHERE idProduct={entry.Key} AND availableUnits >= {entry.Value}", connection, transaction);
 
                 var affectedRows = reduceQuantityByProductID.ExecuteNonQuery();
                 if (affectedRows == 0)
                 {
-                    throw new Exception($"Product with ID {entry.Key} could not be sold (failed to sell {entry.Value} unit(s))!");
+                    throw new NotFoundMicroserviceException($"Product with ID {entry.Key} could not be sold (failed to sell {entry.Value} unit(s))!");
                 }
             }
 
@@ -130,6 +116,32 @@ namespace OrderService.Database
             return orders;
         }
 
+        public IEnumerable<Product> GetAllProductsByOrderId(int idOrder)
+        {
+            var connection = GetConnection();
+            var query = $@"SELECT P.idProduct, P.name, P.description, P.price, P.availableUnits
+                            FROM orders.ordertoproduct OTP
+                            JOIN products.products P ON P.idProduct = OTP.idProduct
+                            WHERE OTP.idOrder={idOrder}";
+
+            var cmd = new MySqlCommand(query, connection);
+            var reader = cmd.ExecuteReader();
+            var products = new List<Product>();
+            while (reader.Read())
+            {
+                var name = reader.GetString("name");
+                var description = reader.GetString("description");
+                var price = reader.GetDecimal("price");
+                var availableUnits = reader.GetInt32("availableUnits");
+                products.Add(new Product( name, description, price, availableUnits));
+            }
+
+            reader.Close();
+            connection.Close();
+
+            return products;
+        }
+
         public MySqlConnection GetConnection()
         {
             var server = "localhost";
@@ -146,6 +158,7 @@ namespace OrderService.Database
             }
             catch (MySqlException ex)
             {
+                Console.WriteLine(ex.Message);
             }
 
             return null;

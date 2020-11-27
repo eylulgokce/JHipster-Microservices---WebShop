@@ -5,7 +5,7 @@ namespace CostumerService.Model
     [DataContract]
     public class Costumer
     {
-
+        public Costumer() { }
         public Costumer(string firstname, string surname, string email, string address, string city, string country)
         {
             Firstname = firstname;
