@@ -4,8 +4,8 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:61831",
-      "sslPort": 44346
+      "applicationUrl": "http://localhost:61989",
+      "sslPort": 44337
     }
   },
   "profiles": {
@@ -17,11 +17,12 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "ProductService": {
+    "CartServiceLocalhost": {
       "commandName": "Project",
       "applicationUrl": "http://localhost:5000",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "NotificationService:Endpoint": "http://localhost:5002"
       }
     }
   }

@@ -1,17 +1,17 @@
-﻿using ProductService.Model;
+﻿using MicroserviceCommon.Model;
 using System.Collections.Generic;
 
 namespace CartService.Model
 {
     public class Cart
     {
-        public Cart(int costumerID, List<Product> cart)
+        public Cart(int customerId, List<Product> cart)
         {
-            CostumerID = costumerID;
-            costumerCart = cart;
+            CustomerId = customerId;
+            CustomerCart = cart;
         }
 
-        public int CostumerID { get; set; }
-        public List<Product> costumerCart { get; set; }
+        public int CustomerId { get; set; }
+        public List<Product> CustomerCart { get; set; }
     }
 }
