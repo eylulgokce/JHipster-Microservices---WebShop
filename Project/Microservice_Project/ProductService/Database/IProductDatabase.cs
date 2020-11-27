@@ -1,4 +1,4 @@
-﻿using ProductService.Model;
+﻿using MicroserviceCommon.Model;
 using System.Collections.Generic;
 
 namespace ProductService.Database

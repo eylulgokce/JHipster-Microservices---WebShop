@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using MicroserviceCommon.Model;
 using Microsoft.AspNetCore.Mvc;
 using ProductService.Database;
-using ProductService.Model;
 using ProductService.Model.Requests;
 
 namespace ProductService.Controllers

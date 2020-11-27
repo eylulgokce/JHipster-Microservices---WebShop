@@ -1,5 +1,5 @@
-﻿using MySql.Data.MySqlClient;
-using ProductService.Model;
+﻿using MicroserviceCommon.Model;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 
@@ -61,6 +61,7 @@ namespace ProductService.Database
             }
             catch (MySqlException ex)
             {
+                Console.WriteLine(ex.Message);
             }
 
             return null;
