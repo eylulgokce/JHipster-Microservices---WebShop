@@ -8,15 +8,13 @@ namespace PaymentService.Model
     public class Payment
     {
         public Payment() { }
-        public Payment(int idCostumer, string paymentMethod, decimal totalPrice)
+        public Payment(int idCostumer, string paymentMethod)
         {
             IdCostumer = idCostumer;
             PaymentMethod = paymentMethod;
-            TotalPrice = totalPrice;
         }
 
         public int IdCostumer { get; set; }
         public string PaymentMethod { get; set; }
-        public decimal TotalPrice { get; set; }
     }
 }
