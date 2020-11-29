@@ -1,10 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections.Concurrent;
+using System.Collections.Generic;
 using CartService.Model;
 using CartService.Model.Requests;
-using MicroserviceCommon.Configuration;
-using MicroserviceCommon.Model;
+using MicroserviceCommon.Clients.Interfaces;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Options;
 
 namespace CartService.Controllers
 {
@@ -12,15 +11,16 @@ namespace CartService.Controllers
     [ApiController]
     public class CartController : ControllerBase
     {
-        private readonly Dictionary<int, Cart> carts;
+        private static readonly ConcurrentDictionary<int, Cart> carts = new ConcurrentDictionary<int, Cart>();
+        private readonly INotificationServiceClient _notificationServiceClient;
 
-        public CartController(IOptions<NotificationConfiguration> config)
+        public CartController(INotificationServiceClient notificationServiceClient)
         {
-            carts = new Dictionary<int, Cart>();
+            _notificationServiceClient = notificationServiceClient;
         }
         
         [HttpGet]
-        public IEnumerable<Product> GetCostumerCart([FromQuery] int idCustomer)
+        public IEnumerable<SelectedProduct> GetCostumerCart([FromQuery] int idCustomer)
         {
             var cart = EnsureCustomerCartExists(idCustomer);
             return cart.CustomerCart;
@@ -30,8 +30,11 @@ namespace CartService.Controllers
         public IActionResult AddProductToCart([FromBody] SelectProductRequest request)
         {
             var cart = EnsureCustomerCartExists(request.IdCustomer);
-            cart.CustomerCart.Add(request.Product);
 
+            // TODO - group same idProducts and sum their numUnits
+
+            cart.CustomerCart.Add(request.SelectedProduct);
+            _notificationServiceClient.PublishNotificationInfo($"Product {request.SelectedProduct.IdProduct} Added to Cart!");
             return new OkObjectResult(null);
         }
 
@@ -42,10 +45,9 @@ namespace CartService.Controllers
                 return carts[idCustomer];
             }
 
-            var newCart = new Cart(idCustomer, new List<Product>());
-            carts.Add(idCustomer, newCart);
+            var newCart = new Cart(idCustomer, new List<SelectedProduct>());
+            carts.TryAdd(idCustomer, newCart);
             return newCart;
         }
-
     }
 }

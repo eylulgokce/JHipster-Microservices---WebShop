@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "Y5BVHBlwIaE5pn+fMSwYIkHbbLiVgvSivZBvmVk6iim8Lr6eufnuWlF24pGBgTRDjANs/04fjp65TXq+W5pZaw==",
+  "dgSpecHash": "Fh8uNxlthfQsD5ikVyYMlqbJ8lyaKfq9N0ABG48BEXXVW3/SoxRAADOKgqKgrWTfcbHPUOu5LO1VlAxTjvMBFg==",
   "success": true,
   "projectFilePath": "C:\\Users\\Eylul Gokce\\Desktop\\Microservice\\Microservices\\Project\\Microservice_Project\\CartService\\CartService.csproj",
   "expectedPackageFiles": [
@@ -36,6 +36,7 @@
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.netcore.platforms\\1.0.1\\microsoft.netcore.platforms.1.0.1.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.netcore.targets\\1.0.1\\microsoft.netcore.targets.1.0.1.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\newtonsoft.json\\9.0.1\\newtonsoft.json.9.0.1.nupkg.sha512",
+    "C:\\Users\\Eylul Gokce\\.nuget\\packages\\restsharp\\106.11.7\\restsharp.106.11.7.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\runtime.native.system\\4.0.0\\runtime.native.system.4.0.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.appcontext\\4.1.0\\system.appcontext.4.1.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.buffers\\4.5.0\\system.buffers.4.5.0.nupkg.sha512",

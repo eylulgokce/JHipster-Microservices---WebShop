@@ -1,3 +1,5 @@
+using MicroserviceCommon.Clients;
+using MicroserviceCommon.Clients.Interfaces;
 using MicroserviceCommon.Configuration;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -20,6 +22,8 @@ namespace CartService
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+
+            services.AddSingleton<INotificationServiceClient, NotificationServiceClient>();
 
             var notificationConfigurationSection = Configuration.GetSection(NotificationConfiguration.SectionName);
             services.Configure<NotificationConfiguration>(notificationConfigurationSection);
