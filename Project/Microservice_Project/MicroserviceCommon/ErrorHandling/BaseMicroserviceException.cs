@@ -38,7 +38,7 @@ namespace MicroserviceCommon.ErrorHandling
                 return new NotFoundObjectResult(response);
             }
 
-            throw new Exception("Unknown error type!");
+            throw new Exception(Message);
         }
     }
 

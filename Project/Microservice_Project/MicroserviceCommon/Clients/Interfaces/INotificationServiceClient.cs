@@ -2,6 +2,6 @@
 {
     public interface INotificationServiceClient
     {
-        public void PublishNotification(string level, string message);
+        public void PublishNotificationInfo(string message);
     }
 }

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "8mpIVuC2ZAT7XcqqUNvq++BiITKtIba3whn7ejpuv0cbvFMRmhCiRiNinh++XCK4SlsuIEZq2+sHWqJ9v8Sa3Q==",
+  "dgSpecHash": "ufVeo5GQgmpmdTiV7Fg8O3CaasBGxTGK8k0tpziIpP10fzVbEdf1mqJs6mM8aex3S2Egg60+xOpOg/36w9WoeA==",
   "success": true,
   "projectFilePath": "C:\\Users\\Eylul Gokce\\Desktop\\Microservice\\Microservices\\Project\\Microservice_Project\\MicroserviceCommon\\MicroserviceCommon.csproj",
   "expectedPackageFiles": [
@@ -36,6 +36,7 @@
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.netcore.platforms\\1.0.1\\microsoft.netcore.platforms.1.0.1.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.netcore.targets\\1.0.1\\microsoft.netcore.targets.1.0.1.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\newtonsoft.json\\9.0.1\\newtonsoft.json.9.0.1.nupkg.sha512",
+    "C:\\Users\\Eylul Gokce\\.nuget\\packages\\restsharp\\106.11.7\\restsharp.106.11.7.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\runtime.native.system\\4.0.0\\runtime.native.system.4.0.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.appcontext\\4.1.0\\system.appcontext.4.1.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.buffers\\4.5.0\\system.buffers.4.5.0.nupkg.sha512",
