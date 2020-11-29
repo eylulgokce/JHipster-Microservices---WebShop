@@ -1,11 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
+using Ocelot.Middleware;
 
 namespace APIGateway
 {
@@ -13,14 +10,21 @@ namespace APIGateway
     {
         public static void Main(string[] args)
         {
-            CreateHostBuilder(args).Build().Run();
+            BuildWebHost(args).Run();
         }
 
-        public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
-                .ConfigureWebHostDefaults(webBuilder =>
+        public static IWebHost BuildWebHost(string[] args)
+        {
+            var builder = WebHost.CreateDefaultBuilder(args);
+            builder
+                .ConfigureAppConfiguration((host, config) =>
                 {
-                    webBuilder.UseStartup<Startup>();
-                });
+                    config.AddJsonFile("ocelot.json");
+                })
+                .UseStartup<Startup>();
+
+            var host = builder.Build();
+            return host;
+        }
     }
 }

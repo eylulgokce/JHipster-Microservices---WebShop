@@ -1,7 +1,19 @@
 {
-  "Reroutes": [
+  "Routes": [
     {
-      "DownstreamPathTemplate": "/costumer",
+      "DownstreamPathTemplate": "/notifications",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": "5002"
+        }
+      ],
+      "UpstreamPathTemplate": "/notifications",
+      "UpstreamHttpMethod": [ "GET", "POST", "DELETE" ]
+    },
+    {
+      "DownstreamPathTemplate": "/myCart",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
@@ -9,8 +21,8 @@
           "Port": "5000"
         }
       ],
-      "UpstreamPathTemplate": "/costumer",
-      "UpstreamHttpMethod": ["GET"]
+      "UpstreamPathTemplate": "/myCart",
+      "UpstreamHttpMethod": [ "GET", "PUT"]
     }
   ]
 }
