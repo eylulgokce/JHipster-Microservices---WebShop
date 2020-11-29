@@ -1,17 +1,34 @@
-﻿using MySql.Data.MySqlClient;
+﻿using MicroserviceCommon.ErrorHandling;
+using MySql.Data.MySqlClient;
 using PaymentService.Model;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace PaymentService.Database
 {
-    public class MySQLDatabase : IPaymentDatabase
+    public class PaymentDatabaseMySQL: IPaymentDatabase
     {
         public void AddPayment(Payment payment)
         {
-            throw new NotImplementedException();
+            var connection = GetConnection();
+            var cmd = new MySqlCommand("INSERT INTO payments.payment (idOrder, paymentMethod) VALUES (@idOrder, @paymentMethod)", connection);
+            cmd.Parameters.AddWithValue("@idOrder", payment.IdOrder);
+            cmd.Parameters.AddWithValue("@paymentMethod", payment.PaymentMethod);
+            try
+            {
+                var affectedRows = cmd.ExecuteNonQuery();
+                if (affectedRows != 1)
+                {
+                    throw new BaseMicroserviceException(System.Net.HttpStatusCode.InternalServerError, "Could not add payment to the system!");
+                }
+            }
+            catch(MySqlException ex)
+            {
+                if(ex.Message.Contains("UNIQUE"))
+                {
+                    throw new BaseMicroserviceException(System.Net.HttpStatusCode.BadRequest, "This order has already been paid for!");
+                }
+            }
         }
 
         public IEnumerable<Payment> ListAllPayments(int idCustomer)

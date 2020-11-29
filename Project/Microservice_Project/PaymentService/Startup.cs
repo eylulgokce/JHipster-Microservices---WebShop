@@ -1,15 +1,12 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using MicroserviceCommon.Clients;
+using MicroserviceCommon.Clients.Interfaces;
+using MicroserviceCommon.Configuration;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
+using PaymentService.Database;
 
 namespace PaymentService
 {
@@ -26,6 +23,12 @@ namespace PaymentService
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddSingleton<IPaymentDatabase, PaymentDatabaseMySQL>();
+
+            services.AddSingleton<INotificationServiceClient, NotificationServiceClient>();
+
+            var notificationConfigurationSection = Configuration.GetSection(NotificationConfiguration.SectionName);
+            services.Configure<NotificationConfiguration>(notificationConfigurationSection);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

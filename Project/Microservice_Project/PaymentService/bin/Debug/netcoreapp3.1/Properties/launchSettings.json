@@ -17,11 +17,12 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "PaymentService": {
+    "PaymentServiceLocalhost": {
       "commandName": "Project",
-      "applicationUrl": "http://localhost:5000",
+      "applicationUrl": "http://localhost:5004",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "NotificationService:Endpoint": "http://localhost:5002"
       }
     }
   }

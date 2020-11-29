@@ -1,20 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace PaymentService.Model
+﻿namespace PaymentService.Model
 {
     public class Payment
     {
         public Payment() { }
-        public Payment(int idCostumer, string paymentMethod)
+        public Payment(int idCustomer, string paymentMethod)
         {
-            IdCostumer = idCostumer;
+            IdOrder = idCustomer;
             PaymentMethod = paymentMethod;
         }
 
-        public int IdCostumer { get; set; }
+        public int IdOrder { get; set; }
         public string PaymentMethod { get; set; }
     }
 }
