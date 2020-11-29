@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "3PM8GUWkzoYaindUbhY0SZjMJG4Vp2xueTZs8Lerur2/2hllmSnxZgwhDiwQ3gj1BDfzs3YcBI/VxzwJxn7vkQ==",
+  "dgSpecHash": "3kGnScszTuf6gvgXlUECEuaUBViYbBDXgUxhAdk7HqJCKiRBhfRnnE3kdl+pu2jK1G20Z20G8Ub+Qe7F9SgKhg==",
   "success": true,
   "projectFilePath": "C:\\Users\\Eylul Gokce\\Desktop\\Microservice\\Microservices\\Project\\Microservice_Project\\ProductService\\ProductService.csproj",
   "expectedPackageFiles": [
@@ -45,6 +45,7 @@
     "C:\\Users\\Eylul Gokce\\.nuget\\packages\\mysql.data\\8.0.22\\mysql.data.8.0.22.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\netstandard.library\\1.6.0\\netstandard.library.1.6.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\newtonsoft.json\\9.0.1\\newtonsoft.json.9.0.1.nupkg.sha512",
+    "C:\\Users\\Eylul Gokce\\.nuget\\packages\\restsharp\\106.11.7\\restsharp.106.11.7.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\runtime.native.system\\4.0.0\\runtime.native.system.4.0.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\runtime.native.system.io.compression\\4.1.0\\runtime.native.system.io.compression.4.1.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\runtime.native.system.net.http\\4.0.1\\runtime.native.system.net.http.4.0.1.nupkg.sha512",
