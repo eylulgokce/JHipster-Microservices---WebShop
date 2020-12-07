@@ -12,7 +12,7 @@ namespace ProductService.Database
         public IEnumerable<Product> GetAllProducts()
         {
             var connection = GetConnection();
-            var cmd = new MySqlCommand($"SELECT * FROM {ProductTableName}", connection);
+            var cmd = new MySqlCommand($"SELECT * FROM microservices.{ProductTableName}", connection);
             var reader = cmd.ExecuteReader();
             var products = new List<Product>();
             while(reader.Read())
@@ -34,7 +34,7 @@ namespace ProductService.Database
         {
             var connection = GetConnection();
             var cmd = new MySqlCommand($@"
-                UPDATE {ProductTableName}
+                UPDATE microservices.{ProductTableName}
                 SET availableUnits=availableUnits-{numSoldUnits}
                 WHERE idProduct={idProduct} AND availableUnits >= {numSoldUnits}", connection);
 
@@ -48,7 +48,7 @@ namespace ProductService.Database
         private MySqlConnection GetConnection()
         {
             var server = "localhost";
-            var database = "products";
+            var database = "microservices";
             var username = "root";
             var password = "root";
 

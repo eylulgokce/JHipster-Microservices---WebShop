@@ -13,7 +13,7 @@ namespace OrderService.Database
             // Disposable
             using var connection = GetConnection();
             var transaction = connection.BeginTransaction();
-            var insertToOrderCommand = new MySqlCommand($@"INSERT INTO orders.order (idCustomer, totalprice)
+            var insertToOrderCommand = new MySqlCommand($@"INSERT INTO microservices.order (idCustomer, totalprice)
                                 VALUES ({ order.IdCustomer }, 0.0)", connection, transaction);
 
             var rowsAffected = insertToOrderCommand.ExecuteNonQuery();
@@ -32,7 +32,7 @@ namespace OrderService.Database
             {
                 // INSERT INTO ordertoproduct
                 var insertToOtp = new MySqlCommand($@"
-                                INSERT INTO orders.ordertoproduct (idOrder, idProduct, numBoughtUnits)
+                                INSERT INTO microservices.ordertoproduct (idOrder, idProduct, numBoughtUnits)
                                 VALUES ({idOrder}, {orderToProduct.IdProduct}, {orderToProduct.NumBoughtUnits})", connection, transaction);
 
                 rowsAffected = insertToOtp.ExecuteNonQuery();
@@ -43,15 +43,15 @@ namespace OrderService.Database
             }
 
             var totalPrice = CalculateTotalPrice(connection, transaction, idOrder);
-            var updateOrderCommand = new MySqlCommand($"UPDATE orders.order SET totalprice=@paramTotalPrice WHERE idOrder=@paramIdOrder", connection, transaction);
+            var updateOrderCommand = new MySqlCommand($"UPDATE microservices.order SET totalprice=@paramTotalPrice WHERE idOrder=@paramIdOrder", connection, transaction);
             updateOrderCommand.Parameters.AddWithValue("@paramTotalPrice", totalPrice);
             updateOrderCommand.Parameters.AddWithValue("@paramIdOrder", idOrder);
             updateOrderCommand.ExecuteNonQuery();
 
             //UPDATE PRODUCT QUANTITY
             var boughtUnitsFromOrder = new MySqlCommand($@"SELECT P.idProduct, OTP.numBoughtUnits
-                                                FROM orders.ordertoproduct OTP
-                                                JOIN products.products P ON P.idProduct = OTP.idProduct
+                                                FROM microservices.ordertoproduct OTP
+                                                JOIN microservices.products P ON P.idProduct = OTP.idProduct
                                                 WHERE OTP.idOrder={idOrder}", connection, transaction);
 
             var numBoughtUnitsPerProduct = new Dictionary<int, int>();
@@ -71,7 +71,7 @@ namespace OrderService.Database
 
             foreach (var entry in numBoughtUnitsPerProduct)
             {
-                var reduceQuantityByProductID = new MySqlCommand($@"UPDATE products.products
+                var reduceQuantityByProductID = new MySqlCommand($@"UPDATE microservices.products
                                                 SET availableUnits = availableUnits-{entry.Value}
                                                 WHERE idProduct={entry.Key} AND availableUnits >= {entry.Value}", connection, transaction);
 
@@ -88,8 +88,8 @@ namespace OrderService.Database
         private decimal CalculateTotalPrice(MySqlConnection connection, MySqlTransaction transaction, int idOrder)
         {
             var query = $@"SELECT SUM(OTP.numBoughtUnits*P.price)
-                                FROM orders.ordertoproduct OTP
-                                JOIN products.products P ON P.idProduct = OTP.idProduct
+                                FROM microservices.ordertoproduct OTP
+                                JOIN microservices.products P ON P.idProduct = OTP.idProduct
                                 WHERE OTP.idOrder={idOrder}";
 
             GetQueryResultSimpleDecimal(connection, transaction, query, out var result);
@@ -99,7 +99,7 @@ namespace OrderService.Database
         public IEnumerable<Order> GetAllOrders()
         {
             var connection = GetConnection();
-            var cmd = new MySqlCommand("SELECT * FROM orders.order", connection);
+            var cmd = new MySqlCommand("SELECT * FROM microservices.order", connection);
             var reader = cmd.ExecuteReader();
             var orders = new List<Order>();
             while (reader.Read())
@@ -120,8 +120,8 @@ namespace OrderService.Database
         {
             var connection = GetConnection();
             var query = $@"SELECT P.idProduct, P.name, P.description, P.price, P.availableUnits
-                            FROM orders.ordertoproduct OTP
-                            JOIN products.products P ON P.idProduct = OTP.idProduct
+                            FROM microservices.ordertoproduct OTP
+                            JOIN microservices.products P ON P.idProduct = OTP.idProduct
                             WHERE OTP.idOrder={idOrder}";
 
             var cmd = new MySqlCommand(query, connection);
@@ -145,7 +145,7 @@ namespace OrderService.Database
         public MySqlConnection GetConnection()
         {
             var server = "localhost";
-            var database = "orders";
+            var database = "microservices";
             var username = "root";
             var password = "root";
 

@@ -11,7 +11,7 @@ namespace PaymentService.Database
         public void AddPayment(Payment payment)
         {
             var connection = GetConnection();
-            var cmd = new MySqlCommand("INSERT INTO payments.payment (idOrder, paymentMethod) VALUES (@idOrder, @paymentMethod)", connection);
+            var cmd = new MySqlCommand("INSERT INTO microservices.payment (idOrder, paymentMethod) VALUES (@idOrder, @paymentMethod)", connection);
             cmd.Parameters.AddWithValue("@idOrder", payment.IdOrder);
             cmd.Parameters.AddWithValue("@paymentMethod", payment.PaymentMethod);
             try
@@ -34,7 +34,7 @@ namespace PaymentService.Database
         public IEnumerable<Payment> ListAllPayments(int idCustomer)
         {
             var connection = GetConnection();
-            var cmd = new MySqlCommand("SELECT * FROM payments.payment WHERE payment.idcostumer = {idCustomer}", connection);
+            var cmd = new MySqlCommand("SELECT * FROM microservices.payment WHERE payment.idcostumer = {idCustomer}", connection);
             var reader = cmd.ExecuteReader();
             var payments = new List<Payment>();
             while (reader.Read())
@@ -54,7 +54,7 @@ namespace PaymentService.Database
         public MySqlConnection GetConnection()
         {
             var server = "localhost";
-            var database = "payments";
+            var database = "microservices";
             var username = "root";
             var password = "root";
 
