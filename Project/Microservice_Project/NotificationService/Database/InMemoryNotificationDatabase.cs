@@ -1,4 +1,6 @@
-﻿using NotificationService.Model;
+﻿using Microsoft.Extensions.Logging;
+using NotificationService.Model;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -6,24 +8,35 @@ namespace NotificationService.Database
 {
     public class InMemoryNotificationDatabase : INotificationDatabase
     {
-        private readonly Dictionary<int, Notification> _allNotifications;
+        private readonly ILogger _logger;
+        private readonly ConcurrentDictionary<int, Notification> _allNotifications;
         private int _nextId = 1;
         
-        public InMemoryNotificationDatabase()
+        public InMemoryNotificationDatabase(ILogger<InMemoryNotificationDatabase> logger)
         {
-            _allNotifications = new Dictionary<int, Notification>();
+            _logger = logger;
+            _allNotifications = new ConcurrentDictionary<int, Notification>();
         }
         
         public void AddNotification(Notification notification)
         {
             var assignedId = _nextId++;
             notification.IdNotification = assignedId;
-            _allNotifications.Add(assignedId, notification);
+            _allNotifications.TryAdd(assignedId, notification);
+            _logger.LogInformation($"Added notification with ID {assignedId}!");
         }
 
         public void DismissNotification(int idNotification)
         {
-            _allNotifications.Remove(idNotification);
+            if (_allNotifications.ContainsKey(idNotification))
+            {
+                _allNotifications.TryRemove(idNotification, out var _);
+                _logger.LogInformation($"Dismissed notification with ID {idNotification}!");
+            }
+            else
+            {
+                _logger.LogWarning($"Tried to dismiss non-existing notification with ID {idNotification}, ignoring...");
+            }
         }
 
         public List<Notification> GetAllNotifications()
