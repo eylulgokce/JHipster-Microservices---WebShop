@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "5icaT1XgM/nJMsHPIfKqdDQFXk10UwKcO3FBehD4IEPlDRqZuwAe/7ZBkdkZE0mK8rjusNS8TEb/63RiInkzug==",
+  "dgSpecHash": "0wkUPDz/hTMnLD6U1ZoGXWu8BCUj6uDktHQ8JcLPXwZutwgINBmPggTCvn8tjJCoWLQ4cArFPE2TNU9fdMQXMg==",
   "success": true,
   "projectFilePath": "C:\\Users\\Eylul Gokce\\Desktop\\Microservice\\Microservices\\Project\\Microservice_Project_MessageBroker\\CartService\\CartService.csproj",
   "expectedPackageFiles": [
@@ -36,6 +36,7 @@
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.netcore.platforms\\1.0.1\\microsoft.netcore.platforms.1.0.1.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.netcore.targets\\1.0.1\\microsoft.netcore.targets.1.0.1.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\newtonsoft.json\\9.0.1\\newtonsoft.json.9.0.1.nupkg.sha512",
+    "C:\\Users\\Eylul Gokce\\.nuget\\packages\\rabbitmq.client\\6.2.1\\rabbitmq.client.6.2.1.nupkg.sha512",
     "C:\\Users\\Eylul Gokce\\.nuget\\packages\\restsharp\\106.11.7\\restsharp.106.11.7.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\runtime.native.system\\4.0.0\\runtime.native.system.4.0.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.appcontext\\4.1.0\\system.appcontext.4.1.0.nupkg.sha512",
@@ -52,7 +53,7 @@
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.io.filesystem.primitives\\4.0.1\\system.io.filesystem.primitives.4.0.1.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.linq\\4.1.0\\system.linq.4.1.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.linq.expressions\\4.1.0\\system.linq.expressions.4.1.0.nupkg.sha512",
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.memory\\4.5.1\\system.memory.4.5.1.nupkg.sha512",
+    "C:\\Users\\Eylul Gokce\\.nuget\\packages\\system.memory\\4.5.4\\system.memory.4.5.4.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.objectmodel\\4.0.12\\system.objectmodel.4.0.12.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.reflection\\4.1.0\\system.reflection.4.1.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.reflection.emit\\4.0.1\\system.reflection.emit.4.0.1.nupkg.sha512",
@@ -74,6 +75,7 @@
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.text.encodings.web\\4.5.0\\system.text.encodings.web.4.5.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.text.regularexpressions\\4.1.0\\system.text.regularexpressions.4.1.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.threading\\4.0.11\\system.threading.4.0.11.nupkg.sha512",
+    "C:\\Users\\Eylul Gokce\\.nuget\\packages\\system.threading.channels\\4.7.1\\system.threading.channels.4.7.1.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.threading.tasks\\4.0.11\\system.threading.tasks.4.0.11.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.threading.tasks.extensions\\4.5.1\\system.threading.tasks.extensions.4.5.1.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.xml.readerwriter\\4.0.11\\system.xml.readerwriter.4.0.11.nupkg.sha512",

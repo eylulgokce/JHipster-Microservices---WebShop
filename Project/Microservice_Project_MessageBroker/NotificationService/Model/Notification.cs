@@ -14,8 +14,11 @@ namespace NotificationService.Model
             Message = message;
         }
 
+        [DataMember(Name ="idNotification")]
         public int IdNotification { get; set; }
+        [DataMember(Name = "level")]
         public string Level { get; set; }
+        [DataMember(Name = "message")]
         public string Message { get; set; }
     }
 }

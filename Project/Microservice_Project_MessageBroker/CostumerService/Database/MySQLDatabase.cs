@@ -8,7 +8,7 @@ namespace CostumerService.Database
         public int FindCostumerID(string firstname, string lastname, string email)
         {
             var connection = GetConnection();
-            var cmd = new MySqlCommand("SELECT idcostumers FROM microservices.costumers where firstname = {firstname} and surname = {surname}", connection);
+            var cmd = new MySqlCommand($"SELECT idcostumers FROM microservices.costumers where firstname = {firstname} and surname = {lastname}", connection);
             var reader = cmd.ExecuteReader();
             var costumerid = 0;
             while (reader.Read())

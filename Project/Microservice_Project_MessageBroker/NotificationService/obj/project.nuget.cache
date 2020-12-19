@@ -1,8 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "ICuPqnp4dqSQ4nhgGrSuJS6gUar85CYC8AQ1BOM8v7mVZK/XQepjGKBwFijfUQtc0JWQya3DVMIYuix4fBbzfw==",
+  "dgSpecHash": "/7Jm1JOr+83z6G5KBo2pTAPwoyOJmzlEEYIywEg48AtAE1E/Ff2mXuGSn+9TDozoimpV2sgdj2/a74iOj1eS8g==",
   "success": true,
   "projectFilePath": "C:\\Users\\Eylul Gokce\\Desktop\\Microservice\\Microservices\\Project\\Microservice_Project_MessageBroker\\NotificationService\\NotificationService.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Eylul Gokce\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",
+    "C:\\Users\\Eylul Gokce\\.nuget\\packages\\rabbitmq.client\\6.2.1\\rabbitmq.client.6.2.1.nupkg.sha512",
+    "C:\\Users\\Eylul Gokce\\.nuget\\packages\\system.memory\\4.5.4\\system.memory.4.5.4.nupkg.sha512",
+    "C:\\Users\\Eylul Gokce\\.nuget\\packages\\system.threading.channels\\4.7.1\\system.threading.channels.4.7.1.nupkg.sha512"
+  ],
   "logs": []
 }

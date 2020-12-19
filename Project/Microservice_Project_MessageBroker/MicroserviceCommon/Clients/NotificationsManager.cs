@@ -4,6 +4,8 @@ using MicroserviceCommon.Messages.Interfaces;
 using MicroserviceCommon.Rest;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json.Linq;
+using RabbitMQ.Client;
+using System.Text;
 
 namespace MicroserviceCommon.Clients
 {
@@ -24,7 +26,14 @@ namespace MicroserviceCommon.Clients
             body["level"] = LevelInfo;
             body["message"] = message;
 
-            _messagePublisher.PublishMessage("notifications", body.ToString());
+            var factory = new ConnectionFactory() { HostName = "localhost" };
+
+            using (var connection = factory.CreateConnection())
+            using (var channel = connection.CreateModel())
+            {
+                var bytes = Encoding.UTF8.GetBytes(body.ToString());
+                channel.BasicPublish("", "hello", null, bytes);
+            }
         }
     }
 }

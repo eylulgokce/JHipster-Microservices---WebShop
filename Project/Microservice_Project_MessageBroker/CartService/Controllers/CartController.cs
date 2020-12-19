@@ -1,9 +1,13 @@
-﻿using System.Collections.Concurrent;
+﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.Text;
 using CartService.Model;
 using CartService.Model.Requests;
 using MicroserviceCommon.Clients.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using RabbitMQ.Client;
+using RabbitMQ.Client.Events;
 
 namespace CartService.Controllers
 {
@@ -12,11 +16,10 @@ namespace CartService.Controllers
     public class CartController : ControllerBase
     {
         private static readonly ConcurrentDictionary<int, Cart> carts = new ConcurrentDictionary<int, Cart>();
-        private readonly INotificationsManager _notificationServiceClient;
 
-        public CartController(INotificationsManager notificationServiceClient)
+        public CartController()
         {
-            _notificationServiceClient = notificationServiceClient;
+
         }
         
         [HttpGet]
@@ -34,7 +37,7 @@ namespace CartService.Controllers
             // TODO - group same idProducts and sum their numUnits
 
             cart.CustomerCart.Add(request.SelectedProduct);
-            _notificationServiceClient.PublishNotificationInfo($"Product {request.SelectedProduct.IdProduct} Added to Cart!");
+           // _notificationServiceClient.PublishNotificationInfo($"Product {request.SelectedProduct.IdProduct} Added to Cart!");
             return new OkObjectResult(null);
         }
 
