@@ -1,14 +1,16 @@
-﻿using MicroserviceCommon.Model;
-using System.Runtime.Serialization;
+﻿using System.Runtime.Serialization;
 
-namespace CartService.Model.Requests
+namespace MicroserviceCommon.CommonModel.Cart
 {
     [DataContract]
     public class SelectProductRequest
     {
         public SelectProductRequest() {}
 
+        [DataMember(Name="idCustomer")]
         public int IdCustomer { get; set; }
+
+        [DataMember(Name = "selectedProduct")]
         public SelectedProduct SelectedProduct { get; set; }
     }
 }

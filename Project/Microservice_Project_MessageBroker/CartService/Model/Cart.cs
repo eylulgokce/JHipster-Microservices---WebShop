@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using MicroserviceCommon.CommonModel.Cart;
+using System.Collections.Generic;
 
 namespace CartService.Model
 {

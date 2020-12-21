@@ -1,6 +1,6 @@
 ﻿using System.Runtime.Serialization;
 
-namespace CartService.Model
+namespace MicroserviceCommon.CommonModel.Cart
 {
     [DataContract]
     public class SelectedProduct
@@ -13,7 +13,10 @@ namespace CartService.Model
             NumUnits = numUnits;
         }
 
+        [DataMember(Name = "idProduct")]
         public int IdProduct { get; set; }
+
+        [DataMember(Name = "numUnits")]
         public int NumUnits { get; set; }
     }
 }
