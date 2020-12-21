@@ -3,10 +3,12 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using NotificationService.Model;
 using RabbitMQ.Client;
+using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using MicroserviceCommon.CommonModel.Cart;
 
 namespace NotificationService.Database
 {
@@ -24,17 +26,17 @@ namespace NotificationService.Database
         
         public void AddNotification(Notification notification)
         {
-            var factory = new ConnectionFactory() { HostName = "localhost", UserName = "guest", Password = "guest" };
+            var factory = new ConnectionFactory() { HostName = "localhost" };
+
             var assignedId = _nextId++;
             notification.IdNotification = assignedId;
 
             using (var connection = factory.CreateConnection())
             using (var channel = connection.CreateModel())
             {
-                var json = JsonConvert.SerializeObject(notification);
-                var bytes = Encoding.UTF8.GetBytes(json);
-                channel.ExchangeDeclare("notifications", ExchangeType.Direct);
-                channel.BasicPublish("notifications", "directexchange_key", null, bytes);
+                channel.ExchangeDeclare("notifications-exchange", ExchangeType.Fanout);
+                var body = Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(notification));
+                channel.BasicPublish("notifications-exchange", string.Empty, null, body);
             }
 
             _logger.LogInformation($"Added notification with ID {assignedId}!");

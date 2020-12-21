@@ -44,6 +44,20 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "dependencies": {
+            "MassTransit": {
+              "target": "Package",
+              "version": "[7.0.7, )"
+            },
+            "MassTransit.AspNetCore": {
+              "target": "Package",
+              "version": "[7.0.7, )"
+            },
+            "MassTransit.RabbitMQ": {
+              "target": "Package",
+              "version": "[7.0.7, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Concurrent;
-using System.Collections.Generic;
-using System.Text;
-using CartService.Model;
-using CartService.Model.Requests;
-using MicroserviceCommon.Clients.Interfaces;
+﻿using System.Collections.Generic;
+using CartService.Database;
+using MicroserviceCommon.CommonModel.Cart;
 using Microsoft.AspNetCore.Mvc;
-using RabbitMQ.Client;
-using RabbitMQ.Client.Events;
 
 namespace CartService.Controllers
 {
@@ -15,42 +9,24 @@ namespace CartService.Controllers
     [ApiController]
     public class CartController : ControllerBase
     {
-        private static readonly ConcurrentDictionary<int, Cart> carts = new ConcurrentDictionary<int, Cart>();
+        private readonly ICartDatabase _cartDatabase;
 
-        public CartController()
+        public CartController(ICartDatabase cartDatabase)
         {
-
+            _cartDatabase = cartDatabase;
         }
-        
+
         [HttpGet]
         public IEnumerable<SelectedProduct> GetCostumerCart([FromQuery] int idCustomer)
         {
-            var cart = EnsureCustomerCartExists(idCustomer);
-            return cart.CustomerCart;
+            return _cartDatabase.GetCostumerCart(idCustomer).CustomerCart;
         }
 
         [HttpPut]
         public IActionResult AddProductToCart([FromBody] SelectProductRequest request)
         {
-            var cart = EnsureCustomerCartExists(request.IdCustomer);
-
-            // TODO - group same idProducts and sum their numUnits
-
-            cart.CustomerCart.Add(request.SelectedProduct);
-           // _notificationServiceClient.PublishNotificationInfo($"Product {request.SelectedProduct.IdProduct} Added to Cart!");
+            _cartDatabase.AddProductToCart(request.IdCustomer, request.SelectedProduct);
             return new OkObjectResult(null);
-        }
-
-        private Cart EnsureCustomerCartExists(int idCustomer)
-        {
-            if (carts.ContainsKey(idCustomer))
-            {
-                return carts[idCustomer];
-            }
-
-            var newCart = new Cart(idCustomer, new List<SelectedProduct>());
-            carts.TryAdd(idCustomer, newCart);
-            return newCart;
         }
     }
 }

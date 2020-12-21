@@ -4,8 +4,8 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:61821",
-      "sslPort": 44359
+      "applicationUrl": "http://localhost:61831",
+      "sslPort": 44346
     }
   },
   "profiles": {
@@ -17,9 +17,9 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "OrderService_Project": {
+    "ProductService": {
       "commandName": "Project",
-      "applicationUrl": "http://localhost:5003",
+      "applicationUrl": "http://localhost:5005",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }

@@ -41,3 +41,10 @@ C:\Users\Eylul Gokce\Desktop\Microservice\Microservices\Project\Microservice_Pro
 C:\Users\Eylul Gokce\Desktop\Microservice\Microservices\Project\Microservice_Project_MessageBroker\NotificationService\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
 C:\Users\Eylul Gokce\Desktop\Microservice\Microservices\Project\Microservice_Project_MessageBroker\NotificationService\obj\Debug\netcoreapp3.1\NotificationService.csproj.CoreCompileInputs.cache
 C:\Users\Eylul Gokce\Desktop\Microservice\Microservices\Project\Microservice_Project_MessageBroker\NotificationService\obj\Debug\netcoreapp3.1\NotificationService.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Eylul Gokce\Desktop\Microservice\Microservices\Project\Microservice_Project_MessageBroker\NotificationService\obj\Debug\netcoreapp3.1\NotificationService.csprojAssemblyReference.cache
+C:\Users\Eylul Gokce\Desktop\Microservice\Microservices\Project\Microservice_Project_MessageBroker\NotificationService\bin\Debug\netcoreapp3.1\Microsoft.DotNet.PlatformAbstractions.dll
+C:\Users\Eylul Gokce\Desktop\Microservice\Microservices\Project\Microservice_Project_MessageBroker\NotificationService\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyModel.dll
+C:\Users\Eylul Gokce\Desktop\Microservice\Microservices\Project\Microservice_Project_MessageBroker\NotificationService\bin\Debug\netcoreapp3.1\RestSharp.dll
+C:\Users\Eylul Gokce\Desktop\Microservice\Microservices\Project\Microservice_Project_MessageBroker\NotificationService\bin\Debug\netcoreapp3.1\MicroserviceCommon.dll
+C:\Users\Eylul Gokce\Desktop\Microservice\Microservices\Project\Microservice_Project_MessageBroker\NotificationService\bin\Debug\netcoreapp3.1\MicroserviceCommon.pdb
+C:\Users\Eylul Gokce\Desktop\Microservice\Microservices\Project\Microservice_Project_MessageBroker\NotificationService\obj\Debug\netcoreapp3.1\NotificationService.MvcApplicationPartsAssemblyInfo.cs

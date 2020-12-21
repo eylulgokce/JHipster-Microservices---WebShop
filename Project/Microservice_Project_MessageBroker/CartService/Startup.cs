@@ -1,3 +1,5 @@
+using CartService.Database;
+using MassTransit;
 using MicroserviceCommon.Clients;
 using MicroserviceCommon.Clients.Interfaces;
 using MicroserviceCommon.Configuration;
@@ -8,10 +10,12 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Newtonsoft.Json;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 using System;
 using System.Text;
+using CartService.Subscribers;
 
 namespace CartService
 {
@@ -31,6 +35,9 @@ namespace CartService
 
             services.AddSingleton<INotificationsManager, NotificationsManager>();
             services.AddSingleton<IMessagePublisher, RabbitMessagePublisher>();
+            services.AddSingleton<ICartDatabase, CartDatabase>();
+            services.AddSingleton<ICartBrokerClient, CartBrokerClientRabbitMQ>();
+            services.AddSingleton<ICartExchangeSubscriber, CartExchangeSubscriber>();
 
             var notificationConfigurationSection = Configuration.GetSection(NotificationConfiguration.SectionName);
             services.Configure<NotificationConfiguration>(notificationConfigurationSection);
@@ -54,30 +61,35 @@ namespace CartService
             {
                 endpoints.MapControllers();
             });
-
+            /*
             var factory = new ConnectionFactory() { HostName = "localhost" };
-            using (var connection = factory.CreateConnection())
-            using (var channel = connection.CreateModel())
+            //{
+            //  Uri = new Uri("amqp://guest:quest@localhost:15672")
+            //};
+            
+            using var connection = factory.CreateConnection();
+            using var channel = connection.CreateModel();
+
+            channel.ExchangeDeclare("notifications", ExchangeType.Fanout);
+            channel.QueueDeclare("test-queue",
+                durable: true,
+                exclusive: false,
+                autoDelete: false,
+                arguments: null);
+
+            channel.QueueBind("test-queue", "notifications", string.Empty, null);
+
+            var consumer = new EventingBasicConsumer(channel);
+            consumer.Received += (sender, eventArguments) =>
             {
-                channel.ExchangeDeclare("notifications", type: ExchangeType.Direct);
+                var body = eventArguments.Body.ToArray();
+                var message = Encoding.UTF8.GetString(body);
+                Console.WriteLine(message);
+            };
 
-                var queueName = channel.QueueDeclare().QueueName;
-                channel.QueueBind(queue: queueName,
-                                  exchange: "notifications",
-                                  routingKey: "xyz");
+            channel.BasicConsume("test-queue", true, consumer);*/
 
-                var consumer = new EventingBasicConsumer(channel);
-                consumer.Received += (model, ea) =>
-                {
-                    var body = ea.Body.ToArray();
-                    var message = Encoding.UTF8.GetString(body);
-                    Console.WriteLine(message);
-                };
-
-                channel.BasicConsume(queue: queueName,
-                                     autoAck: true,
-                                     consumer: consumer);
-            }
+            app.ApplicationServices.GetService<ICartExchangeSubscriber>();
         }
     }
 }

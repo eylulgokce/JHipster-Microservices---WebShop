@@ -67,3 +67,4 @@ C:\Users\Eylul Gokce\Desktop\Microservice\Microservices\Project\Microservice_Pro
 C:\Users\Eylul Gokce\Desktop\Microservice\Microservices\Project\Microservice_Project_MessageBroker\CostumerService\obj\Debug\netcoreapp3.1\CostumerService.dll
 C:\Users\Eylul Gokce\Desktop\Microservice\Microservices\Project\Microservice_Project_MessageBroker\CostumerService\obj\Debug\netcoreapp3.1\CostumerService.pdb
 C:\Users\Eylul Gokce\Desktop\Microservice\Microservices\Project\Microservice_Project_MessageBroker\CostumerService\obj\Debug\netcoreapp3.1\CostumerService.genruntimeconfig.cache
+C:\Users\Eylul Gokce\Desktop\Microservice\Microservices\Project\Microservice_Project_MessageBroker\CostumerService\obj\Debug\netcoreapp3.1\CostumerService.csprojAssemblyReference.cache
