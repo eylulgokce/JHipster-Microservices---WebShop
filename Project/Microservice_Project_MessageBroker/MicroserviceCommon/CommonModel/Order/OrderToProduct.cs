@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization;
-using System.Threading.Tasks;
+﻿using System.Runtime.Serialization;
 
-namespace OrderService.Model
+namespace MicroserviceCommon.CommonModel.Order
 {
     [DataContract]
     public class OrderToProduct
@@ -17,8 +13,13 @@ namespace OrderService.Model
             NumBoughtUnits = numBoughtUnits;
         }
 
+        [DataMember(Name="idOrder")]
         public int IdOrder { get; set; }
+        
+        [DataMember(Name="idProduct")]
         public int IdProduct { get; set; }
+        
+        [DataMember(Name="numBoughtUnits")]
         public int NumBoughtUnits { get; set; }
     }
 }

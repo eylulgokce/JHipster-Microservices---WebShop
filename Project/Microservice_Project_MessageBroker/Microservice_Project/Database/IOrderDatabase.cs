@@ -1,5 +1,6 @@
 ﻿using MicroserviceCommon.Model;
 using System.Collections.Generic;
+using MicroserviceCommon.CommonModel.Order;
 
 namespace OrderService.Database
 {

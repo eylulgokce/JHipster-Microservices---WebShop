@@ -1,8 +1,5 @@
 ﻿using MicroserviceCommon.Clients.Interfaces;
-using MicroserviceCommon.Configuration;
 using MicroserviceCommon.Messages.Interfaces;
-using MicroserviceCommon.Rest;
-using Microsoft.Extensions.Options;
 using Newtonsoft.Json.Linq;
 using RabbitMQ.Client;
 using System.Text;

@@ -3,6 +3,7 @@ using MicroserviceCommon.Model;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using MicroserviceCommon.CommonModel.Order;
 
 namespace OrderService.Database
 {

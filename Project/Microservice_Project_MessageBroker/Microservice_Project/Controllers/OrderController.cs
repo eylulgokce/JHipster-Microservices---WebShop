@@ -1,4 +1,5 @@
-﻿using MicroserviceCommon.ErrorHandling;
+﻿using MicroserviceCommon.CommonModel.Order;
+using MicroserviceCommon.ErrorHandling;
 using Microsoft.AspNetCore.Mvc;
 using OrderService.Database;
 
@@ -10,14 +11,13 @@ namespace OrderService.Controllers
     [ApiController]
     public class OrderController : ControllerBase
     {
-        private IOrderDatabase _orderDatabase;
+        private readonly IOrderDatabase _orderDatabase;
 
         public OrderController(IOrderDatabase orderDatabase)
         {
             _orderDatabase = orderDatabase;
         }
 
-        // POST api/<OrderController>
         [HttpPost]
         public IActionResult Post([FromBody] Order order)
         {

@@ -12,15 +12,14 @@ namespace MicroserviceCommon.Clients
     {
         public const string CartExchangeName = "cart-exchange";
 
-        private IConnection _connection;
-        private IModel _channel;
+        private readonly IModel _channel;
 
         public CartBrokerClientRabbitMQ()
         {
             var factory = new ConnectionFactory() { HostName = "localhost" };
 
-            _connection = factory.CreateConnection();
-            _channel = _connection.CreateModel();
+            var connection = factory.CreateConnection();
+            _channel = connection.CreateModel();
 
             _channel.ExchangeDeclare(CartExchangeName, ExchangeType.Fanout);
         }

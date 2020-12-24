@@ -1,5 +1,4 @@
 using CartService.Database;
-using MassTransit;
 using MicroserviceCommon.Clients;
 using MicroserviceCommon.Clients.Interfaces;
 using MicroserviceCommon.Configuration;
@@ -10,11 +9,6 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Newtonsoft.Json;
-using RabbitMQ.Client;
-using RabbitMQ.Client.Events;
-using System;
-using System.Text;
 using CartService.Subscribers;
 
 namespace CartService

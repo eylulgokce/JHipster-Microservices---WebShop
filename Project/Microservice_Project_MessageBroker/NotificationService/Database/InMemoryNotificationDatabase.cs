@@ -1,14 +1,13 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using System;
+using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using NotificationService.Model;
 using RabbitMQ.Client;
-using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using MicroserviceCommon.CommonModel.Cart;
+using MicroserviceCommon.CommonModel.Order;
 
 namespace NotificationService.Database
 {
@@ -34,10 +33,20 @@ namespace NotificationService.Database
             using (var connection = factory.CreateConnection())
             using (var channel = connection.CreateModel())
             {
-                channel.ExchangeDeclare("notifications-exchange", ExchangeType.Fanout);
+                channel.ExchangeDeclare("notification-exchange", ExchangeType.Fanout);
                 var body = Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(notification));
                 channel.BasicPublish("notifications-exchange", string.Empty, null, body);
             }
+            
+            using (var connection = factory.CreateConnection())
+            using (var channel = connection.CreateModel())
+            {
+                channel.ExchangeDeclare("orders-exchange", ExchangeType.Fanout);
+                var order = new Order(1, 0.0M, DateTime.Now);
+                var body2 = Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(order));
+                channel.BasicPublish("orders-exchange", string.Empty, null, body2);
+            }
+
 
             _logger.LogInformation($"Added notification with ID {assignedId}!");
         }
