@@ -1,5 +1,5 @@
-﻿using PaymentService.Model;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using MicroserviceCommon.CommonModel;
 
 namespace PaymentService.Database
 {

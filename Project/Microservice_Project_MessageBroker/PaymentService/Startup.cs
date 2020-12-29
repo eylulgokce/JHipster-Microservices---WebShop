@@ -7,6 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using PaymentService.Database;
+using PaymentService.Subscribers;
 
 namespace PaymentService
 {
@@ -23,9 +24,11 @@ namespace PaymentService
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddSingleton<IPaymentDatabase, PaymentDatabaseMySQL>();
+            //services.AddSingleton<INotificationsManager, NotificationsManager>();
+            services.AddSingleton<IPaymentBrokerClient, PaymentBrokerClientRabbitMQ>();
 
-            services.AddSingleton<INotificationsManager, NotificationsManager>();
+            services.AddSingleton<IPaymentDatabase, PaymentDatabaseMySQL>();
+            services.AddSingleton<IPaymentExchangeSubscriber, PaymentExchangeSubscriber>();
 
             var notificationConfigurationSection = Configuration.GetSection(NotificationConfiguration.SectionName);
             services.Configure<NotificationConfiguration>(notificationConfigurationSection);

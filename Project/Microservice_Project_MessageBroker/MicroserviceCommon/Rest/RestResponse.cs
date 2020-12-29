@@ -10,6 +10,7 @@ namespace MicroserviceCommon.Rest
     {
         public string RawRequestBody { get; set; }
 
+        [Obsolete]
         public List<Parameter> RequestParameters { get; set; }
 
         public string Uri { get; set; }
@@ -24,6 +25,7 @@ namespace MicroserviceCommon.Rest
 
         public HttpStatusCode StatusCode { get; set; }
 
+        [Obsolete]
         public IList<Parameter> ResponseHeaders { get; set; }
 
         public TResponseResult Result { get; set; }

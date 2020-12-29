@@ -1,8 +1,8 @@
 ﻿using MicroserviceCommon.ErrorHandling;
 using MySql.Data.MySqlClient;
-using PaymentService.Model;
 using System;
 using System.Collections.Generic;
+using MicroserviceCommon.CommonModel;
 
 namespace PaymentService.Database
 {

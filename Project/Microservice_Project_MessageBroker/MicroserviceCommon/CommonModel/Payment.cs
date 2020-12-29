@@ -1,4 +1,4 @@
-﻿namespace PaymentService.Model
+﻿namespace MicroserviceCommon.CommonModel
 {
     public class Payment
     {
@@ -13,3 +13,4 @@
         public string PaymentMethod { get; set; }
     }
 }
+

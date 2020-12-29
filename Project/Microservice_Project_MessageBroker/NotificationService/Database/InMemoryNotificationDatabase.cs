@@ -7,6 +7,7 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using MicroserviceCommon.CommonModel;
 using MicroserviceCommon.CommonModel.Order;
 
 namespace NotificationService.Database
@@ -45,6 +46,15 @@ namespace NotificationService.Database
                 var order = new Order(1, 0.0M, DateTime.Now);
                 var body2 = Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(order));
                 channel.BasicPublish("orders-exchange", string.Empty, null, body2);
+            }
+
+            using (var connection = factory.CreateConnection())
+            using (var channel = connection.CreateModel())
+            {
+                channel.ExchangeDeclare("payments-exchange", ExchangeType.Fanout);
+                var order = new Payment(1, "VISA");
+                var body2 = Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(order));
+                channel.BasicPublish("payments-exchange", string.Empty, null, body2);
             }
 
 

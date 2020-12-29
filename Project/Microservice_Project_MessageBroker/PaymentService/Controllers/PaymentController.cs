@@ -1,8 +1,8 @@
 ﻿using MicroserviceCommon.Clients.Interfaces;
+using MicroserviceCommon.CommonModel;
 using MicroserviceCommon.ErrorHandling;
 using Microsoft.AspNetCore.Mvc;
 using PaymentService.Database;
-using PaymentService.Model;
 
 namespace PaymentService.Controllers
 {
