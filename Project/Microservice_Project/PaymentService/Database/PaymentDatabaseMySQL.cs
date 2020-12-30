@@ -29,6 +29,8 @@ namespace PaymentService.Database
                     throw new BaseMicroserviceException(System.Net.HttpStatusCode.BadRequest, "This order has already been paid for!");
                 }
             }
+
+            connection.Close();
         }
 
         public IEnumerable<Payment> ListAllPayments(int idCustomer)

@@ -17,11 +17,12 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "CostumerService": {
+    "CustomerService": {
       "commandName": "Project",
       "applicationUrl": "http://localhost:5001",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "NotificationService:Endpoint": "http://localhost:5002"
       }
     }
   }

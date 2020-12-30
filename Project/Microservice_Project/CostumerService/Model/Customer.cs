@@ -3,12 +3,12 @@
 namespace CostumerService.Model
 {
     [DataContract]
-    public class Costumer
+    public class Customer
     {
-        public Costumer() { }
-        public Costumer(string firstname, string surname, string email, string address, string city, string country)
+        public Customer() { }
+        public Customer(string firstName, string surname, string email, string address, string city, string country)
         {
-            Firstname = firstname;
+            FirstName = firstName;
             Surname = surname;
             Email = email;
             Address = address;
@@ -16,11 +16,22 @@ namespace CostumerService.Model
             City = city;
         }
 
-        public string Firstname { get; set; }
+        [DataMember(Name = "firstName")]
+        public string FirstName { get; set; }
+
+        [DataMember(Name = "surname")]
         public string Surname { get; set; }
+
+        [DataMember(Name = "email")]
         public string Email { get; set; }
+
+        [DataMember(Name = "address")]
         public string Address { get; set; }
+
+        [DataMember(Name = "country")]
         public string Country { get; set; }
+
+        [DataMember(Name = "city")]
         public string City { get; set; }
     }
 }

@@ -7,13 +7,13 @@ namespace ProductService.Database
 {
     public class MySQLDatabase : IProductDatabase
     {
-        private const string ProductTableName = "products";
+        private const string ProductTableName = "products.products";
 
         public IEnumerable<Product> GetAllProducts()
         {
-            var connection = GetConnection();
-            var cmd = new MySqlCommand($"SELECT * FROM {ProductTableName}", connection);
-            var reader = cmd.ExecuteReader();
+            using var connection = GetConnection();
+            using var cmd = new MySqlCommand($"SELECT * FROM {ProductTableName}", connection);
+            using var reader = cmd.ExecuteReader();
             var products = new List<Product>();
             while(reader.Read())
             {
@@ -24,16 +24,13 @@ namespace ProductService.Database
                 products.Add(new Product(name, description, price, availableUnits));
             }
 
-            reader.Close();
-            connection.Close();
-
             return products;
         }
 
         public void SellProduct(int idProduct, int numSoldUnits)
         {
-            var connection = GetConnection();
-            var cmd = new MySqlCommand($@"
+            using var connection = GetConnection();
+            using var cmd = new MySqlCommand($@"
                 UPDATE {ProductTableName}
                 SET availableUnits=availableUnits-{numSoldUnits}
                 WHERE idProduct={idProduct} AND availableUnits >= {numSoldUnits}", connection);
