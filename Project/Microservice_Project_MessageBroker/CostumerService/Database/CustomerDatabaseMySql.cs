@@ -4,7 +4,7 @@ using System;
 
 namespace CostumerService.Database
 {
-    public class CostumerDatabaseMySQL : ICostumerDatabase
+    public class CustomerDatabaseMySql : ICustomerDatabase
     {
         public int FindCostumerID(string firstname, string lastname, string email)
         {

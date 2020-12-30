@@ -11,12 +11,12 @@ namespace PaymentService.Controllers
     public class PaymentController : ControllerBase
     {
         private readonly IPaymentDatabase _paymentDatabase;
-        private readonly INotificationsManager _notificationServiceClient;
+        private readonly INotificationsManager _notificationsManager;
 
-        public PaymentController(IPaymentDatabase paymentDatabase, INotificationsManager notificationServiceClient)
+        public PaymentController(IPaymentDatabase paymentDatabase, INotificationsManager notificationsManager)
         {
             _paymentDatabase = paymentDatabase;
-            _notificationServiceClient = notificationServiceClient;
+            _notificationsManager = notificationsManager;
         }
 
         [HttpPost]
@@ -25,7 +25,7 @@ namespace PaymentService.Controllers
             try
             {
                 _paymentDatabase.AddPayment(payment);
-                _notificationServiceClient.PublishNotificationInfo($"Payment for order {payment.IdOrder} was successfully processed!");
+                _notificationsManager.PublishNotificationInfo($"Payment for order {payment.IdOrder} was successfully processed!");
             }
             catch(BaseMicroserviceException ex)
             {

@@ -7,16 +7,16 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CostumerService.Controllers
 {
-    [Route("costumer")]
+    [Route("customer")]
     [ApiController]
-    public class CostumerController : ControllerBase
+    public class CustomerController : ControllerBase
     {
-        private ICostumerDatabase _costumerDatabase;
+        private readonly ICustomerDatabase _customerDatabase;
         private readonly INotificationsManager _notificationServiceClient;
 
-        public CostumerController(ICostumerDatabase costumerDatabase, INotificationsManager notificationServiceClient)
+        public CustomerController(ICustomerDatabase customerDatabase, INotificationsManager notificationServiceClient)
         {
-            _costumerDatabase = costumerDatabase;
+            _customerDatabase = customerDatabase;
             _notificationServiceClient = notificationServiceClient;
         }
 
@@ -25,7 +25,7 @@ namespace CostumerService.Controllers
         {
             try
             {
-                _costumerDatabase.insertCostumer(costumer.Firstname, costumer.Surname, costumer.Email, costumer.Address, costumer.City, costumer.Country);
+                _customerDatabase.insertCostumer(costumer.Firstname, costumer.Surname, costumer.Email, costumer.Address, costumer.City, costumer.Country);
                 _notificationServiceClient.PublishNotificationInfo($"Customer {costumer.Firstname} {costumer.Surname} was successfully inserted!");
             }
             catch (BaseMicroserviceException ex)

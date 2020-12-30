@@ -30,6 +30,8 @@ namespace PaymentService
             services.AddSingleton<IPaymentDatabase, PaymentDatabaseMySQL>();
             services.AddSingleton<IPaymentExchangeSubscriber, PaymentExchangeSubscriber>();
 
+            services.AddSingleton<INotificationsManager, NotificationsManager>();
+
             var notificationConfigurationSection = Configuration.GetSection(NotificationConfiguration.SectionName);
             services.Configure<NotificationConfiguration>(notificationConfigurationSection);
         }
@@ -52,6 +54,8 @@ namespace PaymentService
             {
                 endpoints.MapControllers();
             });
+
+            app.ApplicationServices.GetService<IPaymentExchangeSubscriber>();
         }
     }
 }

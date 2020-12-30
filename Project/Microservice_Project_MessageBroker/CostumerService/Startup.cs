@@ -20,7 +20,7 @@ namespace CostumerService
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddSingleton<ICostumerDatabase, CostumerDatabaseMySQL>();
+            services.AddSingleton<ICustomerDatabase, CustomerDatabaseMySql>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -2,8 +2,6 @@ using CartService.Database;
 using MicroserviceCommon.Clients;
 using MicroserviceCommon.Clients.Interfaces;
 using MicroserviceCommon.Configuration;
-using MicroserviceCommon.Messages;
-using MicroserviceCommon.Messages.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -28,7 +26,6 @@ namespace CartService
             services.AddControllers();
 
             services.AddSingleton<INotificationsManager, NotificationsManager>();
-            services.AddSingleton<IMessagePublisher, RabbitMessagePublisher>();
             services.AddSingleton<ICartDatabase, CartDatabase>();
             services.AddSingleton<ICartBrokerClient, CartBrokerClientRabbitMQ>();
             services.AddSingleton<ICartExchangeSubscriber, CartExchangeSubscriber>();

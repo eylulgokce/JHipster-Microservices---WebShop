@@ -68,3 +68,12 @@ C:\Users\Eylul Gokce\Desktop\Microservice\Microservices\Project\Microservice_Pro
 C:\Users\Eylul Gokce\Desktop\Microservice\Microservices\Project\Microservice_Project_MessageBroker\CostumerService\obj\Debug\netcoreapp3.1\CostumerService.pdb
 C:\Users\Eylul Gokce\Desktop\Microservice\Microservices\Project\Microservice_Project_MessageBroker\CostumerService\obj\Debug\netcoreapp3.1\CostumerService.genruntimeconfig.cache
 C:\Users\Eylul Gokce\Desktop\Microservice\Microservices\Project\Microservice_Project_MessageBroker\CostumerService\obj\Debug\netcoreapp3.1\CostumerService.csprojAssemblyReference.cache
+C:\Users\Eylul Gokce\Desktop\Microservice\Microservices\Project\Microservice_Project_MessageBroker\CostumerService\bin\Debug\netcoreapp3.1\Microsoft.DotNet.PlatformAbstractions.dll
+C:\Users\Eylul Gokce\Desktop\Microservice\Microservices\Project\Microservice_Project_MessageBroker\CostumerService\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyModel.dll
+C:\Users\Eylul Gokce\Desktop\Microservice\Microservices\Project\Microservice_Project_MessageBroker\CostumerService\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+C:\Users\Eylul Gokce\Desktop\Microservice\Microservices\Project\Microservice_Project_MessageBroker\CostumerService\bin\Debug\netcoreapp3.1\RabbitMQ.Client.dll
+C:\Users\Eylul Gokce\Desktop\Microservice\Microservices\Project\Microservice_Project_MessageBroker\CostumerService\bin\Debug\netcoreapp3.1\RestSharp.dll
+C:\Users\Eylul Gokce\Desktop\Microservice\Microservices\Project\Microservice_Project_MessageBroker\CostumerService\bin\Debug\netcoreapp3.1\System.Threading.Channels.dll
+C:\Users\Eylul Gokce\Desktop\Microservice\Microservices\Project\Microservice_Project_MessageBroker\CostumerService\bin\Debug\netcoreapp3.1\MicroserviceCommon.dll
+C:\Users\Eylul Gokce\Desktop\Microservice\Microservices\Project\Microservice_Project_MessageBroker\CostumerService\bin\Debug\netcoreapp3.1\MicroserviceCommon.pdb
+C:\Users\Eylul Gokce\Desktop\Microservice\Microservices\Project\Microservice_Project_MessageBroker\CostumerService\obj\Debug\netcoreapp3.1\CostumerService.MvcApplicationPartsAssemblyInfo.cs

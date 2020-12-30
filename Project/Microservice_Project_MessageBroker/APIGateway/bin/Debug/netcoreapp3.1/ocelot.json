@@ -10,7 +10,7 @@
         }
       ],
       "UpstreamPathTemplate": "/notifications",
-      "UpstreamHttpMethod": [ "GET", "POST", "DELETE" ]
+      "UpstreamHttpMethod": [ "POST", "DELETE" ]
     },
     {
       "DownstreamPathTemplate": "/myCart",
@@ -22,10 +22,10 @@
         }
       ],
       "UpstreamPathTemplate": "/myCart",
-      "UpstreamHttpMethod": [ "GET", "PUT" ]
+      "UpstreamHttpMethod": [ "PUT" ]
     },
     {
-      "DownstreamPathTemplate": "/costumer",
+      "DownstreamPathTemplate": "/customer",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
@@ -33,7 +33,7 @@
           "Port": "5001"
         }
       ],
-      "UpstreamPathTemplate": "/me",
+      "UpstreamPathTemplate": "/customer",
       "UpstreamHttpMethod": []
     },
     {
@@ -45,7 +45,7 @@
           "Port": "5003"
         }
       ],
-      "UpstreamPathTemplate": "/myorders",
+      "UpstreamPathTemplate": "/orders",
       "UpstreamHttpMethod": [ "POST" ]
     },
     {
@@ -57,7 +57,7 @@
           "Port": "5004"
         }
       ],
-      "UpstreamPathTemplate": "/mypayments",
+      "UpstreamPathTemplate": "/payments",
       "UpstreamHttpMethod": [ "POST" ]
     },
     {

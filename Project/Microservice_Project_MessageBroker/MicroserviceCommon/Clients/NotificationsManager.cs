@@ -1,5 +1,4 @@
 ﻿using MicroserviceCommon.Clients.Interfaces;
-using MicroserviceCommon.Messages.Interfaces;
 using Newtonsoft.Json.Linq;
 using RabbitMQ.Client;
 using System.Text;
@@ -9,13 +8,6 @@ namespace MicroserviceCommon.Clients
     public class NotificationsManager : INotificationsManager
     {
         private const string LevelInfo = "info";
-
-        private IMessagePublisher _messagePublisher;
-
-        public NotificationsManager(IMessagePublisher messagePublisher)
-        {
-            _messagePublisher = messagePublisher;
-        }
 
         public void PublishNotificationInfo(string message)
         {
