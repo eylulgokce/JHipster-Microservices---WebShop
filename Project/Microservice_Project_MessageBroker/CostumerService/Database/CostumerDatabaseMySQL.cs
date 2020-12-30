@@ -1,14 +1,15 @@
-﻿using MySql.Data.MySqlClient;
+﻿using MicroserviceCommon.ErrorHandling;
+using MySql.Data.MySqlClient;
 using System;
 
 namespace CostumerService.Database
 {
-    public class MySQLDatabase : ICostumerDatabase
+    public class CostumerDatabaseMySQL : ICostumerDatabase
     {
         public int FindCostumerID(string firstname, string lastname, string email)
         {
             var connection = GetConnection();
-            var cmd = new MySqlCommand($"SELECT idcostumers FROM microservices.costumers where firstname = {firstname} and surname = {lastname}", connection);
+            var cmd = new MySqlCommand($"SELECT idcostumers FROM costumers where firstname = {firstname} and surname = {lastname}", connection);
             var reader = cmd.ExecuteReader();
             var costumerid = 0;
             while (reader.Read())
@@ -27,11 +28,30 @@ namespace CostumerService.Database
             return costumerid;
         }
 
+        public void insertCostumer(string firstname, string lastname, string email, string address, string city, string country)
+        {
+            using var connection = GetConnection();
+            var cmd = new MySqlCommand($@"INSERT INTO costumers.costumers (firstname, surname, email, address, city, country) 
+                                                VALUES ({firstname}, {lastname}, {email}, {address}, {city}, {country})", connection);
+            
+            try
+            {
+                var affectedRows = cmd.ExecuteNonQuery();
+                if (affectedRows != 1)
+                {
+                    throw new BaseMicroserviceException(System.Net.HttpStatusCode.InternalServerError, "Could not insert costumer to the system!");
+                }
+            }
+            catch (MySqlException ex)
+            {
+            }
+        }
+
 
         public MySqlConnection GetConnection()
         {
             var server = "localhost";
-            var database = "microservices";
+            var database = "costumers";
             var username = "root";
             var password = "root";
 
