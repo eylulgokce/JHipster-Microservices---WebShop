@@ -17,7 +17,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PaymentService", "PaymentSe
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "APIGateway", "APIGateway\APIGateway.csproj", "{E3ACAAB0-52A2-41B8-AD80-CD8CB7DAD233}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MicroserviceCommon", "MicroserviceCommon\MicroserviceCommon.csproj", "{5C6B41CC-B15F-4564-BB1D-1F15D405B9CA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MicroserviceCommon", "MicroserviceCommon\MicroserviceCommon.csproj", "{5C6B41CC-B15F-4564-BB1D-1F15D405B9CA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

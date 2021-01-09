@@ -83,6 +83,7 @@ namespace OrderService.Database
             }
 
             transaction.Commit();
+            connection.Close();
         }
 
         private decimal CalculateTotalPrice(MySqlConnection connection, MySqlTransaction transaction, int idOrder)
