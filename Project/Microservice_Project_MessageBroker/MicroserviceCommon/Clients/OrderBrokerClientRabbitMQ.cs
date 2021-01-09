@@ -3,6 +3,7 @@ using System.Text;
 using MicroserviceCommon.Clients.Interfaces;
 using MicroserviceCommon.CommonModel.Order;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 
@@ -45,6 +46,19 @@ namespace MicroserviceCommon.Clients
             };
 
             _channel.BasicConsume(queueName, true, consumer);
+        }
+
+        public void PublishOrder(Order order)
+        {
+            var factory = new ConnectionFactory() { HostName = "localhost" };
+
+            using (var connection = factory.CreateConnection())
+            using (var channel = connection.CreateModel())
+            {
+                var orderJson = JsonConvert.SerializeObject(order);
+                var bytes = Encoding.UTF8.GetBytes(orderJson.ToString());
+                channel.BasicPublish(OrderExchangeName, string.Empty, null, bytes);
+            }
         }
     }
 }

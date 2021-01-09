@@ -6,5 +6,6 @@ namespace MicroserviceCommon.Clients.Interfaces
     public interface IOrderBrokerClient
     {
        void Subscribe(string queueName, Action<Order> onOrderReceived);
+       void PublishOrder(Order order);
     }
 }
