@@ -24,6 +24,19 @@ namespace MicroserviceCommon.Clients
             _channel.ExchangeDeclare(PaymentExchangeName, ExchangeType.Fanout);
         }
 
+        public void PublishPayment(Payment payment)
+        {
+            var factory = new ConnectionFactory() { HostName = "localhost" };
+
+            using (var connection = factory.CreateConnection())
+            using (var channel = connection.CreateModel())
+            {
+                var orderJson = JsonConvert.SerializeObject(payment);
+                var bytes = Encoding.UTF8.GetBytes(orderJson.ToString());
+                channel.BasicPublish(PaymentExchangeName, string.Empty, null, bytes);
+            }
+        }
+
         public void Subscribe(string queueName, Action<Payment> onOrderReceived)
         {
             Console.WriteLine($"Subscribing to queue {queueName} in exchange {PaymentExchangeName}...");
