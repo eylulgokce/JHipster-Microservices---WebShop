@@ -1,9 +1,0 @@
-C:\Users\Eylul Gokce\Desktop\Microservice\Microservices\Project\Microservice_Project\MicroserviceCommon\bin\Debug\netcoreapp3.1\MicroserviceCommon.deps.json
-C:\Users\Eylul Gokce\Desktop\Microservice\Microservices\Project\Microservice_Project\MicroserviceCommon\bin\Debug\netcoreapp3.1\MicroserviceCommon.dll
-C:\Users\Eylul Gokce\Desktop\Microservice\Microservices\Project\Microservice_Project\MicroserviceCommon\obj\Debug\netcoreapp3.1\MicroserviceCommon.csprojAssemblyReference.cache
-C:\Users\Eylul Gokce\Desktop\Microservice\Microservices\Project\Microservice_Project\MicroserviceCommon\obj\Debug\netcoreapp3.1\MicroserviceCommon.AssemblyInfoInputs.cache
-C:\Users\Eylul Gokce\Desktop\Microservice\Microservices\Project\Microservice_Project\MicroserviceCommon\obj\Debug\netcoreapp3.1\MicroserviceCommon.AssemblyInfo.cs
-C:\Users\Eylul Gokce\Desktop\Microservice\Microservices\Project\Microservice_Project\MicroserviceCommon\bin\Debug\netcoreapp3.1\MicroserviceCommon.pdb
-C:\Users\Eylul Gokce\Desktop\Microservice\Microservices\Project\Microservice_Project\MicroserviceCommon\obj\Debug\netcoreapp3.1\MicroserviceCommon.dll
-C:\Users\Eylul Gokce\Desktop\Microservice\Microservices\Project\Microservice_Project\MicroserviceCommon\obj\Debug\netcoreapp3.1\MicroserviceCommon.pdb
-C:\Users\Eylul Gokce\Desktop\Microservice\Microservices\Project\Microservice_Project\MicroserviceCommon\obj\Debug\netcoreapp3.1\MicroserviceCommon.csproj.CoreCompileInputs.cache
