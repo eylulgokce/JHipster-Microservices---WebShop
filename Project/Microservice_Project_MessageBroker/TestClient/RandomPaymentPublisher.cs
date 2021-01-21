@@ -21,16 +21,11 @@ namespace TestClient
         {
             var paymentBroker = new PaymentBrokerClientRabbitMQ();
             var random = new Random();
-            for (var i = 0; i < _numPayments; i++)
+            for (var i = 1; i < _numPayments+1; i++)
             {
-                if(i > 0)
-                {
-                    //System.Threading.Thread.Sleep(_timeSpanBetweenOrders);
-                }
+                var payment = new Payment(i, "VISA");
 
-                var payment = new Payment(1, "VISA");
-
-                Console.WriteLine($"Publishing payment #{i + 1} for Order {payment.IdOrder} ");
+                Console.WriteLine($"Publishing payment #{i} for Order {payment.IdOrder} ");
                 paymentBroker.PublishPayment(payment);
             }
         }

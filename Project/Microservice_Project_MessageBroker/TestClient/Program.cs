@@ -13,8 +13,9 @@ namespace TestClient
             Console.ReadLine();
 
             var publishers = new List<AbstractTestPublisher>();
-            publishers.Add(new RandomOrderPublisher(500, TimeSpan.FromMilliseconds(100)));
-            publishers.Add(new CartServicePublisher(500, TimeSpan.FromMilliseconds(100)));
+            publishers.Add(new RandomOrderPublisher(2000, TimeSpan.FromMilliseconds(100)));
+            publishers.Add(new CartServicePublisher(2000, TimeSpan.FromMilliseconds(100)));
+            publishers.Add(new RandomPaymentPublisher(2000, TimeSpan.FromMilliseconds(100)));
 
             foreach (var publisher in publishers)
             {

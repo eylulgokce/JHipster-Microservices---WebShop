@@ -18,8 +18,27 @@ namespace PaymentService.Subscribers
             _logger = logger;
         }
 
+        private static int paymentNumber = 0;
+        private static DateTime startTime;
+
         public void OnPaymentReceived(Payment payment)
         {
+
+            if (paymentNumber == 0)
+            {
+                startTime = DateTime.Now;
+            }
+
+            paymentNumber++;
+            _logger.LogInformation($"Adding Payment #{paymentNumber} with {payment.PaymentMethod} to database...");
+            _paymentDatabase.AddPayment(payment);
+
+
+            var totalTime = (DateTime.Now - startTime).TotalSeconds;
+            var averageTime = totalTime / paymentNumber;
+            _logger.LogInformation($"Average time to process a payment: {averageTime:G2}s");
+
+            /*
             try
             {
                 _paymentDatabase.AddPayment(payment);
@@ -28,6 +47,7 @@ namespace PaymentService.Subscribers
             {
                 _logger.LogError(ex.Message);
             }
+            */
         }
     }
 }
