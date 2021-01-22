@@ -22,11 +22,6 @@ namespace TestClient
             var random = new Random();
             for (var i = 0; i < _numOrders; i++)
             {
-                if(i > 0)
-                {
-                    //System.Threading.Thread.Sleep(_timeSpanBetweenOrders);
-                }
-                
                 var order = new Order(1, 10.0M, DateTime.Now)
                 {
                     Products = new List<OrderToProduct>

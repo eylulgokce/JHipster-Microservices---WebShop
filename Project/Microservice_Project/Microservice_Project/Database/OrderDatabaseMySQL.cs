@@ -38,7 +38,7 @@ namespace OrderService.Database
                 rowsAffected = insertToOtp.ExecuteNonQuery();
                 if (rowsAffected != 1)
                 {
-                    throw new Exception("There is an error occoured when inserting to ordertoproduct! " + rowsAffected + "Orders are effected when executing the query!");
+                    throw new Exception("There is an error occoured when inserting to ordertoproduct!" + rowsAffected + "Orders are effected when executing the query!");
                 }
             }
 

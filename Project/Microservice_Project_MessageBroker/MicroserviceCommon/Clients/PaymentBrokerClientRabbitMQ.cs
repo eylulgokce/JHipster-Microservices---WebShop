@@ -31,13 +31,13 @@ namespace MicroserviceCommon.Clients
             using (var connection = factory.CreateConnection())
             using (var channel = connection.CreateModel())
             {
-                var orderJson = JsonConvert.SerializeObject(payment);
-                var bytes = Encoding.UTF8.GetBytes(orderJson.ToString());
+                var paymentJson = JsonConvert.SerializeObject(payment);
+                var bytes = Encoding.UTF8.GetBytes(paymentJson.ToString());
                 channel.BasicPublish(PaymentExchangeName, string.Empty, null, bytes);
             }
         }
 
-        public void Subscribe(string queueName, Action<Payment> onOrderReceived)
+        public void Subscribe(string queueName, Action<Payment> onPaymentReceived)
         {
             Console.WriteLine($"Subscribing to queue {queueName} in exchange {PaymentExchangeName}...");
             _channel.QueueDeclare(queueName,
@@ -53,8 +53,8 @@ namespace MicroserviceCommon.Clients
             {
                 var body = eventArguments.Body.ToArray();
                 var json = Encoding.UTF8.GetString(body);
-                var order = JsonConvert.DeserializeObject<Payment>(json);
-                onOrderReceived(order);
+                var payment = JsonConvert.DeserializeObject<Payment>(json);
+                onPaymentReceived(payment);
             };
 
             _channel.BasicConsume(queueName, true, consumer);
