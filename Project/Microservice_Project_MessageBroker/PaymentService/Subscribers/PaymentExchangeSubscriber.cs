@@ -31,6 +31,8 @@ namespace PaymentService.Subscribers
 
             paymentNumber++;
             _logger.LogInformation($"Adding Payment #{paymentNumber} with {payment.PaymentMethod} to database...");
+            
+            
             _paymentDatabase.AddPayment(payment);
 
 
