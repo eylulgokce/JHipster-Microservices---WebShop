@@ -33,11 +33,11 @@ namespace NotificationService.Controllers
         }
 
         [HttpDelete]
-        public void DismissNotification([FromQuery] int id)
+        public void DismissNotification([FromQuery] int idNotification)
         {
             try
             {
-                _notificationDatabase.DismissNotification(id);
+                _notificationDatabase.DismissNotification(idNotification);
             }
             catch (Exception ex)
             {

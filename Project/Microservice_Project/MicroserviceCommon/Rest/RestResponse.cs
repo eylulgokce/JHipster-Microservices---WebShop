@@ -6,9 +6,6 @@ using System.Text;
 
 namespace MicroserviceCommon.Rest
 {
-    /// <summary>
-    /// Wraps all useful information about invoked REST request.
-    /// </summary>
     public class RestResponse<TResponseResult>
     {
 

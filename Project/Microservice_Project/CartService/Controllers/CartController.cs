@@ -30,9 +30,6 @@ namespace CartService.Controllers
         public IActionResult AddProductToCart([FromBody] SelectProductRequest request)
         {
             var cart = EnsureCustomerCartExists(request.IdCustomer);
-
-            // TODO - group same idProducts and sum their numUnits
-
             cart.CustomerCart.Add(request.SelectedProduct);
             _notificationServiceClient.PublishNotificationInfo($"Product {request.SelectedProduct.IdProduct} Added to Cart!");
             return new OkObjectResult(null);

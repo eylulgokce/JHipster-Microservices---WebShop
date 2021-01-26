@@ -9,7 +9,7 @@ using ProductService.Model.Requests;
 namespace ProductService.Controllers
 {
     [ApiController]
-    [Route("products")] // localhost:5000/abcde
+    [Route("products")] 
     public class ProductController : Controller
     {
         private readonly ILogger _logger;
